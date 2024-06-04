@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/06/04 00:35:00 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/06/04 14:56:28 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,17 +58,15 @@ $(SRC_PATH)/%.o: $(SRC_PATH)/%.c
 
 clean:
 	rm -f $(OBJ)
+	$(MAKE_NO_PRINT) clean -C $(LIBFT_PATH)
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE_NO_PRINT) fclean -C $(LIBFT_PATH)
 
 re: fclean all
 
-libclean:
-	$(MAKE_NO_PRINT) clean -C $(LIBFT_PATH)
-
-libfclean: libclean
-	$(MAKE_NO_PRINT) fclean -C $(LIBFT_PATH)
+mlxfclean:
 	rm -rf $(MLX_PATH)
 
 .PHONY: all clean fclean re libft libmlx
