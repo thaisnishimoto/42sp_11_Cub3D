@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/06/04 14:56:28 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/06/04 15:03:32 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,8 @@ $(LIBMLX):
 $(SRC_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-#leak: all
-#	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --suppressions=readline.supp --suppressions=42readline.supp ./$(NAME)
-#	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --track-fds=yes --suppressions=readline.supp ./$(NAME)
+leak: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=.mlx42.supp ./$(NAME) $(MAP)
 
 #================================CLEAN=========================================#
 
