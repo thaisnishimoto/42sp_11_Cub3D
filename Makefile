@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/06/04 15:03:32 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/06/12 23:45:16 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -Wunreachable-code
-LIBFT_FLAG = -L$(LIB_PATH) -lft
+LIBFT_FLAG = -L$(LIBFT_PATH) -lft
 MLX_FLAG = -L$(MLX_PATH) -lmlx42 -ldl -lglfw -pthread -lm
 MAKE_NO_PRINT = $(MAKE) --no-print-directory
 
@@ -23,7 +23,7 @@ MAKE_NO_PRINT = $(MAKE) --no-print-directory
 LIBFT_PATH = ./libft
 MLX_PATH = ./MLX42/build
 SRC_PATH = ./src
-HEADERS	:= -I ./include -I ./MLX42/include
+HEADERS	:= -I $(LIBFT_PATH) -I ./MLX42/include/MLX42
 
 #================================FILES=========================================#
 
