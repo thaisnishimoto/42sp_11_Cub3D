@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/12 23:43:12 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/14 19:13:03 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@
 typedef struct s_map
 {
 	char	*path;
-	int	file_rows;
-	char	**file_content;
+	int	rows;
+	char	**content;
 	char	*north_texture_path;
 	char	*south_texture_path;
 	char	*west_texture_path;
 	char	*east_texture_path;
 	int	*floor_color;
 	int	*ceiling_color;
+	char	**layout;
 }	t_map;
 
 typedef struct s_data
@@ -44,5 +45,10 @@ typedef struct s_data
 	t_map	map;
 	
 }	t_data;
+
+/*Parse functions*/
+void	parse_map(t_data *game);
+
+void	handle_error(char *msg, int errno_set);
 
 #endif
