@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/14 19:13:03 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:19:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <math.h>
 
 /*Macros*/
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 640
+# define HEIGHT 480
 
 /*Structs*/
 typedef struct s_map
@@ -35,8 +35,8 @@ typedef struct s_map
 	char	*south_texture_path;
 	char	*west_texture_path;
 	char	*east_texture_path;
-	int	*floor_color;
-	int	*ceiling_color;
+	uint32_t	floor_color;
+	uint32_t	ceiling_color;
 	char	**layout;
 }	t_map;
 

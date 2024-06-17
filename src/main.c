@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/17 11:37:07 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:15:03 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	main(int argc, char **argv)
 //	printf("\n%s", game.map.south_texture_path);
 //	printf("\n%s", game.map.west_texture_path);
 //	printf("\n%s", game.map.east_texture_path);
+//	printf("\n%x", game.map.floor_color);
+//	printf("\n%x", game.map.ceiling_color);
 //	// Start mlx
 //	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 //	if (!mlx)
