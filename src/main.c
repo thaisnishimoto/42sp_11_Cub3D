@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/17 17:15:03 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:04:20 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,22 @@ int	main(int argc, char **argv)
 	t_data	game;
 
 	(void)argc;
+//	init_struct
 	game.map.path = argv[1];
 //	validate_map();
 	parse_map(&game);
-//	int i = 0;
-//	while (game.map.content[i])
-//	{
-//		printf("%s", game.map.content[i]);
-//		i++;
-//	}
-//	printf("\n%s", game.map.north_texture_path);
-//	printf("\n%s", game.map.south_texture_path);
-//	printf("\n%s", game.map.west_texture_path);
-//	printf("\n%s", game.map.east_texture_path);
-//	printf("\n%x", game.map.floor_color);
-//	printf("\n%x", game.map.ceiling_color);
+	printf("%s\n", game.map.north_tex_path);
+	printf("%s\n", game.map.south_tex_path);
+	printf("%s\n", game.map.west_tex_path);
+	printf("%s\n", game.map.east_tex_path);
+	printf("%x\n", game.map.floor_color);
+	printf("%x\n", game.map.ceiling_color);
+	int i = 0;
+	while (game.map.layout[i])
+	{
+		printf("%s", game.map.layout[i]);
+		i++;
+	}
 //	// Start mlx
 //	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 //	if (!mlx)
