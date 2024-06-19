@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/18 18:04:20 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:04:09 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,6 @@ int	main(int argc, char **argv)
 		printf("%s", game.map.layout[i]);
 		i++;
 	}
-//	// Start mlx
-//	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
-//	if (!mlx)
-//        error();
-//
-//	// Create a new image
-//	mlx_image_t* img = mlx_new_image(mlx, 512, 512);
-//	if (!img)
-//		error();
-//
-//	// Set every pixel to white
-//	memset(img->pixels, 255, img->width * img->height * sizeof(int32_t));
-//
-//	// Display an instance of the image
-//	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
-//        error();
-//
-//	// Modify the x & y position of an already existing instance.
-//	img->instances[0].x += 5;
-//	img->instances[0].y += 5;
-//
-//	mlx_loop(mlx);
-//
-//	// Optional, terminate will clean up any leftovers, this is just to demonstrate.
-//	mlx_delete_image(mlx, img);
-//	mlx_terminate(mlx);
+	init_game(&game);
 	return (EXIT_SUCCESS);
 }

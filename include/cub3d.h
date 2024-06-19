@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/18 18:03:29 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:31:29 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_map
 typedef struct s_data
 {
 	t_map	map;
+	mlx_t	*screen;
+	mlx_image_t	*background_img;
 	
 }	t_data;
 
@@ -55,4 +57,6 @@ char	*skip_spaces(char *str);
 
 void	handle_error(char *msg, int errno_set);
 
+/*Parse functions*/
+void	init_game(t_data *game);
 #endif
