@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/18 19:04:09 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:51:29 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,26 @@ void	handle_error(char *msg, int errno_set)
 
 int	main(int argc, char **argv)
 {
-	t_data	game;
+	t_data	*game;
 
 	(void)argc;
 //	init_struct
-	game.map.path = argv[1];
+	game = ft_calloc(1, sizeof(t_data));
+	game->map.path = argv[1];
 //	validate_map();
-	parse_map(&game);
-	printf("%s\n", game.map.north_tex_path);
-	printf("%s\n", game.map.south_tex_path);
-	printf("%s\n", game.map.west_tex_path);
-	printf("%s\n", game.map.east_tex_path);
-	printf("%x\n", game.map.floor_color);
-	printf("%x\n", game.map.ceiling_color);
+	parse_map(game);
+	init_game(game);
+//	printf("%s\n", game.map.north_tex_path);
+//	printf("%s\n", game.map.south_tex_path);
+//	printf("%s\n", game.map.west_tex_path);
+//	printf("%s\n", game.map.east_tex_path);
+//	printf("%x\n", game.map.floor_color);
+//	printf("%x\n", game.map.ceiling_color);
 	int i = 0;
-	while (game.map.layout[i])
+	while (game->map.layout[i])
 	{
-		printf("%s", game.map.layout[i]);
+		printf("%s", game->map.layout[i]);
 		i++;
 	}
-	init_game(&game);
 	return (EXIT_SUCCESS);
 }

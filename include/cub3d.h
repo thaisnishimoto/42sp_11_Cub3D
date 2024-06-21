@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/19 11:31:29 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:44:27 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,20 @@
 /*Macros*/
 # define WIDTH 640
 # define HEIGHT 480
+# define MINI_WIDTH 100
+# define MINI_HEIGHT 100
 
 /*Structs*/
+typedef struct s_pos
+{
+	size_t	x;
+	size_t	y;
+}	t_pos;
+
 typedef struct s_map
 {
 	char	*path;
-	int	rows;
+	int	content_rows;
 	char	**content;
 	char	*north_tex_path;
 	char	*south_tex_path;
@@ -38,13 +46,22 @@ typedef struct s_map
 	uint32_t	floor_color;
 	uint32_t	ceiling_color;
 	char	**layout;
+	size_t	layout_rows;
+	size_t	layout_columns;
 }	t_map;
+
+typedef struct s_player
+{
+	int	pos_x;
+	int	pos_y;
+}	t_player;
 
 typedef struct s_data
 {
 	t_map	map;
 	mlx_t	*screen;
 	mlx_image_t	*background_img;
+	mlx_image_t	*minimap_img;
 	
 }	t_data;
 
@@ -59,4 +76,5 @@ void	handle_error(char *msg, int errno_set);
 
 /*Parse functions*/
 void	init_game(t_data *game);
+void	draw_minimap(t_data *game);
 #endif

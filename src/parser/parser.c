@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/18 17:57:05 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:02:48 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	allocate_file_content(t_data *game)
 	int	i;
 	char	*line;
 
-	game->map.rows = get_file_rows(game);
+	game->map.content_rows = get_file_rows(game);
 	fd = open(game->map.path, O_RDWR);
 	if (fd == -1)
 		handle_error("Open failed", 1);
-	game->map.content = ft_calloc(game->map.rows + 1, sizeof(char *));
+	game->map.content = ft_calloc(game->map.content_rows + 1, sizeof(char *));
 	i = 0;
 	line = ft_get_next_line(fd);
 	while (line)
