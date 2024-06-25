@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/21 15:29:04 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:07:09 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	draw_background(t_data *game)
 	if (!game->background_img)
         	handle_error("Background image creation failed.", 0);
 	y = 0;
-	while (y <= HEIGHT)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x <= WIDTH)
+		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
 				mlx_put_pixel(game->background_img, x, y, game->map.ceiling_color);
@@ -44,9 +44,9 @@ void	init_game(t_data *game)
 	if (!game->screen)
         	handle_error("Mlx init failed.", 0);
 //	mlx_key_hook(game->screen, key_press, (void *)game);
-//	draw_background(game);
+	draw_background(game);
 	draw_minimap(game);
 	mlx_loop(game->screen);
-	mlx_delete_image(game->screen, game->background_img);
+//	mlx_delete_image(game->screen, game->background_img);
 	mlx_terminate(game->screen);
 }
