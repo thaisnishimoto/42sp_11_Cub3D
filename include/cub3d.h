@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/21 16:44:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:01:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 # include <math.h>
 
 /*Macros*/
-# define WIDTH 640
-# define HEIGHT 480
-# define MINI_WIDTH 100
-# define MINI_HEIGHT 100
+# define WIDTH 800
+# define HEIGHT 600
+# define MINI_WIDTH 200
+# define MINI_HEIGHT 200
+# define MINI_TILE_SIZE 5
 
 /*Structs*/
 typedef struct s_pos

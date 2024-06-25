@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/25 17:07:09 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:09:15 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	init_game(t_data *game)
 	draw_background(game);
 	draw_minimap(game);
 	mlx_loop(game->screen);
-//	mlx_delete_image(game->screen, game->background_img);
+	mlx_delete_image(game->screen, game->background_img);
+	mlx_delete_image(game->screen, game->minimap_img);
 	mlx_terminate(game->screen);
 }
