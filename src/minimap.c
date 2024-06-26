@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/25 17:23:19 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/25 23:29:11 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,19 @@ void	draw_minimap(t_data *game)
 	if (!game->minimap_img)
         	handle_error("Minimap image creation failed.", 0);
 	minimap.y = 0;
-	while (minimap.y < game->map.layout_rows)
+	while (game->map.layout[minimap.y])
 	{
 		minimap.x = 0;
-		while (minimap.x < ft_strlen(game->map.layout[minimap.y]))
+		while (game->map.layout[minimap.y][minimap.x] != '\n')
 		{
 			draw_pos.x = minimap.x * scale;
 			draw_pos.y = minimap.y * scale;
 			if (game->map.layout[minimap.y][minimap.x] == '1')
-				draw_tile(game->minimap_img, &draw_pos, scale, game->map.floor_color);
-			else if (game->map.layout[minimap.y][minimap.x] == '0')
-				draw_tile(game->minimap_img, &draw_pos, scale, game->map.ceiling_color);
+				draw_tile(game->minimap_img, &draw_pos, scale, 0x00000080);
+			else if (game->map.layout[minimap.y][minimap.x] == ' ')
+				draw_tile(game->minimap_img, &draw_pos, scale, 0xFFFFFF00);
 			else
-				draw_tile(game->minimap_img, &draw_pos, scale, 0);
-//				mlx_put_pixel(game->minimap_img, minimap.x, minimap.y, game->map.floor_color); 
+				draw_tile(game->minimap_img, &draw_pos, scale, 0xFFFFFF80);
 			minimap.x++;
 		}
 		minimap.y++;
