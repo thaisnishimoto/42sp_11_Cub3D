@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/25 17:09:15 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:19:50 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ void	draw_background(t_data *game)
         	handle_error("Background image render failed.", 0);
 }
 
+int	end_game(void *param)
+{
+	t_data	*game;
+
+	game = param;
+	ft_free_matrix(game->map.content);
+	free(game);
+	mlx_delete_image(game->screen, game->background_img);
+	mlx_delete_image(game->screen, game->minimap_img);
+	mlx_terminate(game->screen);
+//	for handle_error call
+//	if (game->config_stage < 4)
+//		return (1);
+	exit (EXIT_SUCCESS);
+}
+
 void	init_game(t_data *game)
 {
 	game->screen = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
@@ -46,8 +62,8 @@ void	init_game(t_data *game)
 //	mlx_key_hook(game->screen, key_press, (void *)game);
 	draw_background(game);
 	draw_minimap(game);
+	mlx_close_hook(game->screen, (void *)end_game, game);
+//	mlx_key_hook(game->screen, render_player, NULL);
+//	mlx_loop_hook(game->screen, render_player, NULL);
 	mlx_loop(game->screen);
-	mlx_delete_image(game->screen, game->background_img);
-	mlx_delete_image(game->screen, game->minimap_img);
-	mlx_terminate(game->screen);
 }
