@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/25 17:01:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:42:04 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define HEIGHT 600
 # define MINI_WIDTH 200
 # define MINI_HEIGHT 200
-# define MINI_TILE_SIZE 5
 
 /*Structs*/
 typedef struct s_pos
@@ -51,19 +50,14 @@ typedef struct s_map
 	size_t	layout_columns;
 }	t_map;
 
-typedef struct s_player
-{
-	int	pos_x;
-	int	pos_y;
-}	t_player;
-
 typedef struct s_data
 {
 	t_map	map;
 	mlx_t	*screen;
 	mlx_image_t	*background_img;
 	mlx_image_t	*minimap_img;
-	
+	mlx_image_t	*player_img;
+	t_pos	player;
 }	t_data;
 
 /*Parse functions*/
@@ -71,11 +65,18 @@ void	parse_map(t_data *game);
 void	get_textures(t_data *game);
 void	get_background_colors(t_data *game);
 void	get_map_layout(t_data *game);
+void	get_player_pos(t_data *game);
 char	*skip_spaces(char *str);
 
 void	handle_error(char *msg, int errno_set);
 
-/*Parse functions*/
+/*Run game*/
 void	init_game(t_data *game);
 void	draw_minimap(t_data *game);
+
+/*Hook functions*/
+void	key_press(mlx_key_data_t keydata, void *param);
+int		end_game(void *param);
+void	render_player(void *param);
+
 #endif

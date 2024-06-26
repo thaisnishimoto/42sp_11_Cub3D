@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/25 23:29:11 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:45:03 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,29 @@ void	draw_minimap(t_data *game)
 	}
 	if (mlx_image_to_window(game->screen, game->minimap_img, scale, scale) < 0)
         	handle_error("Minimap image render failed.", 0);
+}
+
+void	render_player(void *param)
+{
+	t_data	*game;
+	t_pos	draw_pos;
+	int	scale;
+
+	game = param;
+	if (game->player_img)
+	{
+		mlx_delete_image(game->screen, game->player_img);
+	}
+	if (game->map.layout_rows > game->map.layout_columns)
+		scale = MINI_HEIGHT / game->map.layout_rows;
+	else
+		scale = MINI_WIDTH / game->map.layout_columns;
+	game->player_img = mlx_new_image(game->screen, MINI_WIDTH, MINI_HEIGHT);
+	if (!game->player_img)
+		handle_error("Player image creation failed.", 0);
+	draw_pos.x = game->player.x * scale;
+	draw_pos.y = game->player.y * scale;
+	draw_tile(game->player_img, &draw_pos, scale, 0x00FF00FF);
+	if (mlx_image_to_window(game->screen, game->player_img, scale, scale) < 0)
+		handle_error("Player image render failed.", 0);
 }

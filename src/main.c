@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/21 17:51:29 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:35:16 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ int	main(int argc, char **argv)
 	t_data	*game;
 
 	(void)argc;
-//	init_struct
 	game = ft_calloc(1, sizeof(t_data));
+//	init_struct
 	game->map.path = argv[1];
 //	validate_map();
 	parse_map(game);
-	init_game(game);
 //	printf("%s\n", game.map.north_tex_path);
 //	printf("%s\n", game.map.south_tex_path);
 //	printf("%s\n", game.map.west_tex_path);
@@ -54,5 +53,6 @@ int	main(int argc, char **argv)
 		printf("%s", game->map.layout[i]);
 		i++;
 	}
+	init_game(game);
 	return (EXIT_SUCCESS);
 }
