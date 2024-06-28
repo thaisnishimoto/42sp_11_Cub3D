@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/26 15:50:23 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:21:52 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,42 @@ void	get_player_pos(t_data *game)
 		x = 0;
 		while (game->map.layout[y][x])
 		{
-			if (game->map.layout[y][x] == 'N' || game->map.layout[y][x] == 'S'
-			|| game->map.layout[y][x] == 'E' || game->map.layout[y][x] == 'W')
+			if (game->map.layout[y][x] == 'N')
 			{
 				game->player.x = x;
 				game->player.y = y;
-				printf("player pos x: %d | y: %d\n", x, y);
+				game->dir.x = 0;
+				game->dir.y = -1;
 				break ;
 			}
+			else if (game->map.layout[y][x] == 'S')
+			{
+				game->player.x = x;
+				game->player.y = y;
+				game->dir.x = 0;
+				game->dir.y = 1;
+				break ;
+			}
+			else if (game->map.layout[y][x] == 'E')
+			{
+				game->player.x = x;
+				game->player.y = y;
+				game->dir.x = 1;
+				game->dir.y = 0;
+				break ;
+			}
+			else if (game->map.layout[y][x] == 'W')
+			{
+				game->player.x = x;
+				game->player.y = y;
+				game->dir.x = -1;
+				game->dir.y = 0;
+				break ;
+			}
+			//replace player pos to 0?
 			x++;
 		}
 		y++;
 	}
+	printf("player pos x: %d | y: %d\n", (int)game->player.x, (int)game->player.y);
 }

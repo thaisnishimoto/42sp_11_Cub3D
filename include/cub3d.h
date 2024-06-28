@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/26 15:42:04 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:20:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@
 # define MINI_HEIGHT 200
 
 /*Structs*/
-typedef struct s_pos
+typedef struct s_coord
 {
-	size_t	x;
-	size_t	y;
-}	t_pos;
+	float	x;
+	float	y;
+//	int	x;
+//	int	y;
+}	t_coord;
 
 typedef struct s_map
 {
@@ -57,7 +59,8 @@ typedef struct s_data
 	mlx_image_t	*background_img;
 	mlx_image_t	*minimap_img;
 	mlx_image_t	*player_img;
-	t_pos	player;
+	t_coord	player;
+	t_coord	dir;
 }	t_data;
 
 /*Parse functions*/
@@ -78,5 +81,6 @@ void	draw_minimap(t_data *game);
 void	key_press(mlx_key_data_t keydata, void *param);
 int		end_game(void *param);
 void	render_player(void *param);
+void	draw_line(t_data *game, t_coord *point1, int scale);
 
 #endif
