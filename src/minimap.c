@@ -6,13 +6,13 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/27 22:19:38 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:33:56 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	draw_tile(mlx_image_t *img, t_coord *pos, size_t size, int color)
+void	draw_tile(mlx_image_t *img, t_vector *pos, size_t size, int color)
 {
 	size_t	current_x;
 	size_t	current_y;
@@ -32,8 +32,8 @@ void	draw_tile(mlx_image_t *img, t_coord *pos, size_t size, int color)
 
 void	draw_minimap(t_data *game)
 {
-	t_coord	minimap;
-	t_coord	draw_pos;
+	t_vector	minimap;
+	t_vector	draw_pos;
 	int	scale;
 
 	if (game->map.layout_rows > game->map.layout_columns)
@@ -68,7 +68,7 @@ void	draw_minimap(t_data *game)
 void	render_player(void *param)
 {
 	t_data	*game;
-	t_coord	draw_pos;
+	t_vector	draw_pos;
 	int	scale;
 
 	game = param;
@@ -91,11 +91,11 @@ void	render_player(void *param)
 		handle_error("Player image render failed.", 0);
 }
 
-void	draw_line(t_data *game, t_coord *point1, int scale)
+void	draw_line(t_data *game, t_vector *point1, int scale)
 {
 	int	delta_x;
 	int	delta_y;
-	t_coord	point2;
+	t_vector	point2;
 	int	steps;
 	float	x_increment;
 	float	y_increment;

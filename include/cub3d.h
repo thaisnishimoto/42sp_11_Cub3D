@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/27 22:20:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:25:11 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+# include <float.h>
 
 /*Macros*/
 # define WIDTH 800
@@ -28,13 +29,11 @@
 # define MINI_HEIGHT 200
 
 /*Structs*/
-typedef struct s_coord
+typedef struct s_vector
 {
 	float	x;
 	float	y;
-//	int	x;
-//	int	y;
-}	t_coord;
+}	t_vector;
 
 typedef struct s_map
 {
@@ -52,6 +51,20 @@ typedef struct s_map
 	size_t	layout_columns;
 }	t_map;
 
+typedef struct s_dda
+{
+	int	pixel_x;
+	float	plane_ratio;
+	t_vector	dir;
+	t_vector	delta_dist;
+	t_vector	dist_side;
+	t_vector	map;
+	int	step_x;
+	int	step_y;
+	int	hit_side;
+	float	perp_dist;
+}	t_dda;
+
 typedef struct s_data
 {
 	t_map	map;
@@ -59,8 +72,12 @@ typedef struct s_data
 	mlx_image_t	*background_img;
 	mlx_image_t	*minimap_img;
 	mlx_image_t	*player_img;
-	t_coord	player;
-	t_coord	dir;
+	mlx_image_t	*wall_img;
+	t_vector	player;
+	t_vector	dir;
+	t_vector	plane;
+	t_dda	ray;
+	float	plane_ratio;
 }	t_data;
 
 /*Parse functions*/
@@ -81,6 +98,7 @@ void	draw_minimap(t_data *game);
 void	key_press(mlx_key_data_t keydata, void *param);
 int		end_game(void *param);
 void	render_player(void *param);
-void	draw_line(t_data *game, t_coord *point1, int scale);
+void	draw_line(t_data *game, t_vector *point1, int scale);
+void    raycast(void *param);
 
 #endif

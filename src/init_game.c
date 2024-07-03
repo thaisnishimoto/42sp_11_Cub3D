@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/27 20:34:32 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/03 00:36:07 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	draw_background(t_data *game)
 	}
 	if (mlx_image_to_window(game->screen, game->background_img, 0, 0) < 0)
         	handle_error("Background image render failed.", 0);
+	game->background_img->instances->z = 1;
 }
 
 void	init_game(t_data *game)
@@ -44,10 +45,11 @@ void	init_game(t_data *game)
 	if (!game->screen)
         	handle_error("Mlx init failed.", 0);
 	draw_background(game);
-	draw_minimap(game);
-	mlx_close_hook(game->screen, (void *)end_game, game);
-	mlx_key_hook(game->screen, key_press, game);
-	mlx_loop_hook(game->screen, render_player, game);
+//	draw_minimap(game);
+//	mlx_close_hook(game->screen, (void *)end_game, game);
+//	mlx_key_hook(game->screen, key_press, game);
+//	mlx_loop_hook(game->screen, render_player, game);
 //	mlx_loop_hook(game->screen, raycast, game);
+	raycast(game);
 	mlx_loop(game->screen);
 }

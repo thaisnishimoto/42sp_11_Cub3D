@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/27 22:21:52 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:44:49 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	get_player_pos(t_data *game)
 				game->player.y = y;
 				game->dir.x = 0;
 				game->dir.y = -1;
+				game->plane.x = 0.66;
+				game->plane.y = 0;
 				break ;
 			}
 			else if (game->map.layout[y][x] == 'S')
@@ -37,6 +39,8 @@ void	get_player_pos(t_data *game)
 				game->player.y = y;
 				game->dir.x = 0;
 				game->dir.y = 1;
+				game->plane.x = -0.66;
+				game->plane.y = 0;
 				break ;
 			}
 			else if (game->map.layout[y][x] == 'E')
@@ -45,6 +49,8 @@ void	get_player_pos(t_data *game)
 				game->player.y = y;
 				game->dir.x = 1;
 				game->dir.y = 0;
+				game->plane.x = 0;
+				game->plane.y = -0.66;
 				break ;
 			}
 			else if (game->map.layout[y][x] == 'W')
@@ -53,6 +59,8 @@ void	get_player_pos(t_data *game)
 				game->player.y = y;
 				game->dir.x = -1;
 				game->dir.y = 0;
+				game->plane.x = 0;
+				game->plane.y = 0.66;
 				break ;
 			}
 			//replace player pos to 0?
