@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/03 00:36:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:07:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
 		ray->perp_dist = ray->dist_side.y - ray->delta_dist.y;
 }
 
+void	choose_wall_texture(t_dda *ray)
+{
+	if (ray->hit_side == 0)
+		ray->color = 0x0000FFFF;
+	else
+		ray->color = 0x000088FF;
+}
+
 void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 {
 	int	wall_height;
@@ -86,7 +94,7 @@ void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 	pixel_y = line_start;
 	while (pixel_y < line_end)
 	{
-		mlx_put_pixel(game->wall_img, ray->pixel_x, pixel_y, 0x0000FFFF); 
+		mlx_put_pixel(game->wall_img, ray->pixel_x, pixel_y, ray->color); 
 		pixel_y++;
 	}
 }
@@ -113,7 +121,7 @@ void	raycast(void *param)
 		calculate_ray_deltas(&ray);
 		calculate_ray_initial_dist_to_sides(game, &ray);
 		calculate_ray_dist_to_wall(game, &ray);
-//		choose_wall_texture;
+		choose_wall_texture(&ray);
 		render_wall_line_to_screen(game, &ray);
 		ray.pixel_x++;
 	}

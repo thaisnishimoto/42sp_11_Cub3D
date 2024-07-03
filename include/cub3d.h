@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/02 18:25:11 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:07:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_dda
 	int	step_x;
 	int	step_y;
 	int	hit_side;
+	int	color;
 	float	perp_dist;
 }	t_dda;
 
