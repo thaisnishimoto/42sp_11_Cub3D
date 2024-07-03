@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/02 17:33:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:12:46 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	draw_minimap(t_data *game)
 	}
 	if (mlx_image_to_window(game->screen, game->minimap_img, scale, scale) < 0)
         	handle_error("Minimap image render failed.", 0);
+	game->minimap_img->instances->z = 2;
 }
 
 void	render_player(void *param)
@@ -89,6 +90,7 @@ void	render_player(void *param)
 	draw_line(game, &game->player, scale);
 	if (mlx_image_to_window(game->screen, game->player_img, scale, scale) < 0)
 		handle_error("Player image render failed.", 0);
+	game->player_img->instances->z = 3;
 }
 
 void	draw_line(t_data *game, t_vector *point1, int scale)
