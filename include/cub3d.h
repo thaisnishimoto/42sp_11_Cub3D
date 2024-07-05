@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/04 23:32:24 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 00:30:18 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define MINI_HEIGHT 200
 # define FPS 60.0
 # define SPEED 5.0
-# define ROTATE_SPEED 3.0
+# define ROTATE_SPEED 0.04
 
 /*Structs*/
 typedef struct s_vector

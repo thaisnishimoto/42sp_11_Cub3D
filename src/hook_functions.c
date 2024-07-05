@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/04 23:33:22 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 10:46:59 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,28 @@ void	move_player(t_data *game, float speed)
 
 	velocity.x = game->dir.x * speed;
 	velocity.y = game->dir.y * speed;
-	game->player.x += velocity.x * (1 / FPS);
-	game->player.y += velocity.y * (1 / FPS);
+	game->player.x += velocity.x * (1.0 / FPS);
+	game->player.y += velocity.y * (1.0 / FPS);
+}
+
+void	move_player_left(t_data *game, float speed)
+{
+	t_vector	velocity;
+
+	velocity.x = game->dir.y * speed;
+	velocity.y = -game->dir.x * speed;
+	game->player.x += velocity.x * (1.0 / FPS);
+	game->player.y += velocity.y * (1.0 / FPS);
+}
+
+void	move_player_right(t_data *game, float speed)
+{
+	t_vector	velocity;
+
+	velocity.x = -game->dir.y * speed;
+	velocity.y = game->dir.x * speed;
+	game->player.x += velocity.x * (1.0 / FPS);
+	game->player.y += velocity.y * (1.0 / FPS);
 }
 
 void	rotate_player(t_data *game, float speed)
@@ -27,11 +47,20 @@ void	rotate_player(t_data *game, float speed)
 	float	old_x;
 
 	old_x = game->dir.x;
-	game->dir.x = game->dir.x * cos(speed / FPS) - game->dir.y * sin(speed / FPS);
-	game->dir.y = old_x * cos(speed / FPS) + game->dir.y * sin(speed / FPS);
+//	game->dir.x = game->dir.x * cos(speed / FPS) - game->dir.y * sin(speed / FPS);
+//	game->dir.y = old_x * cos(speed / FPS) + game->dir.y * sin(speed / FPS);
+//	old_x = game->plane.x;
+//	game->plane.x = game->plane.x * cos(speed / FPS) - game->plane.y * sin(speed / FPS);
+//	game->plane.y = old_x * cos(speed / FPS) + game->plane.y * sin(speed / FPS);
+	game->dir.x = game->dir.x * cos(speed) - game->dir.y * sin(speed);
+	game->dir.y = old_x * cos(speed) + game->dir.y * sin(speed);
 	old_x = game->plane.x;
-	game->plane.x = game->plane.x * cos(speed / FPS) - game->plane.y * sin(speed / FPS);
-	game->plane.y = old_x * cos(speed / FPS) + game->plane.y * sin(speed / FPS);
+	game->plane.x = game->plane.x * cos(speed) - game->plane.y * sin(speed);
+	game->plane.y = old_x * cos(speed) + game->plane.y * sin(speed);
+	printf("dir x: %f\n", game->dir.x);
+//	printf("dir y: %f\n", game->dir.y);
+//	printf("plane x: %f\n", game->plane.x);
+//	printf("plane y: %f\n", game->plane.y);
 }
 
 void	key_press(void *param)
@@ -46,9 +75,9 @@ void	key_press(void *param)
 	if (mlx_is_key_down(game->screen, MLX_KEY_S) ||	mlx_is_key_down(game->screen, MLX_KEY_DOWN))
 		move_player(game, -SPEED);
 	if (mlx_is_key_down(game->screen, MLX_KEY_A))
-		game->player.x -= 1;
+		move_player_left(game, SPEED);
 	if (mlx_is_key_down(game->screen, MLX_KEY_D))
-		game->player.x += 1;
+		move_player_right(game, SPEED);
 //	if (mlx_is_key_down(game->screen, MLX_KEY_RIGHT))
 //		rotate_player(game, -ROTATE_SPEED);
 //	if (mlx_is_key_down(game->screen, MLX_KEY_LEFT))
