@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/03 13:11:40 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:09:24 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_game(t_data *game)
 	draw_background(game);
 	draw_minimap(game);
 	mlx_close_hook(game->screen, (void *)end_game, game);
-	mlx_key_hook(game->screen, key_press, game);
+	mlx_loop_hook(game->screen, key_press, game);
 	mlx_loop_hook(game->screen, render_player, game);
 	mlx_loop_hook(game->screen, raycast, game);
 	raycast(game);

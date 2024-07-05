@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/03 13:07:25 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/04 23:32:24 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define HEIGHT 600
 # define MINI_WIDTH 200
 # define MINI_HEIGHT 200
+# define FPS 60.0
+# define SPEED 5.0
+# define ROTATE_SPEED 3.0
 
 /*Structs*/
 typedef struct s_vector
@@ -96,7 +99,7 @@ void	init_game(t_data *game);
 void	draw_minimap(t_data *game);
 
 /*Hook functions*/
-void	key_press(mlx_key_data_t keydata, void *param);
+void	key_press(void *param);
 int		end_game(void *param);
 void	render_player(void *param);
 void	draw_line(t_data *game, t_vector *point1, int scale);
