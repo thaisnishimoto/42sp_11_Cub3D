@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 11:34:35 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:41:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,18 +99,29 @@ void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 	}
 }
 
+void	update_frame_time(t_data *game)
+{
+	float	old_time;
+
+	old_time = game->time;
+	game->time = mlx_get_time();
+	game->frame_time = game->time - old_time;
+	printf("FPS = %f\n", 1 / game->frame_time);
+}
+
 void	raycast(void *param)
 {
 	t_data	*game;
 	t_dda	ray;
 
 	game = param;
-	ray.pixel_x = 0;
+	update_frame_time(game);
 	if (game->wall_img)
 		mlx_delete_image(game->screen, game->wall_img);
 	game->wall_img = mlx_new_image(game->screen, WIDTH, HEIGHT);
 	if (!game->wall_img)
         	handle_error("Wall image creation failed.", 0);
+	ray.pixel_x = 0;
 	while (ray.pixel_x < WIDTH)
 	{
 		ray.plane_ratio = 2 * ray.pixel_x / (float)WIDTH - 1;	

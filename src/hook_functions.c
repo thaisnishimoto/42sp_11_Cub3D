@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 11:50:16 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:56:26 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	move_player(t_data *game, float speed)
 
 	velocity.x = game->dir.x * speed;
 	velocity.y = game->dir.y * speed;
-	game->player.x += velocity.x * (1.0 / FPS);
-	game->player.y += velocity.y * (1.0 / FPS);
+	game->player.x += velocity.x * game->frame_time;
+	game->player.y += velocity.y * game->frame_time;
 }
 
 void	move_player_left(t_data *game, float speed)
@@ -28,8 +28,8 @@ void	move_player_left(t_data *game, float speed)
 
 	velocity.x = game->dir.y * speed;
 	velocity.y = -game->dir.x * speed;
-	game->player.x += velocity.x * (1.0 / FPS);
-	game->player.y += velocity.y * (1.0 / FPS);
+	game->player.x += velocity.x * game->frame_time;
+	game->player.y += velocity.y * game->frame_time;
 }
 
 void	move_player_right(t_data *game, float speed)
@@ -38,8 +38,8 @@ void	move_player_right(t_data *game, float speed)
 
 	velocity.x = -game->dir.y * speed;
 	velocity.y = game->dir.x * speed;
-	game->player.x += velocity.x * (1.0 / FPS);
-	game->player.y += velocity.y * (1.0 / FPS);
+	game->player.x += velocity.x * game->frame_time;
+	game->player.y += velocity.y * game->frame_time;
 }
 
 void	rotate_player(t_data *game, float speed)
@@ -47,11 +47,11 @@ void	rotate_player(t_data *game, float speed)
 	float	old_x;
 
 	old_x = game->dir.x;
-	game->dir.x = game->dir.x * cos(speed / FPS) - game->dir.y * sin(speed / FPS);
-	game->dir.y = old_x * sin(speed / FPS) + game->dir.y * cos(speed / FPS);
+	game->dir.x = game->dir.x * cos(speed * game->frame_time) - game->dir.y * sin(speed * game->frame_time);
+	game->dir.y = old_x * sin(speed * game->frame_time) + game->dir.y * cos(speed * game->frame_time);
 	old_x = game->plane.x;
-	game->plane.x = game->plane.x * cos(speed / FPS) - game->plane.y * sin(speed / FPS);
-	game->plane.y = old_x * sin(speed / FPS) + game->plane.y * cos(speed / FPS);
+	game->plane.x = game->plane.x * cos(speed * game->frame_time) - game->plane.y * sin(speed * game->frame_time);
+	game->plane.y = old_x * sin(speed * game->frame_time) + game->plane.y * cos(speed * game->frame_time);
 }
 
 void	key_press(void *param)

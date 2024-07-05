@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 11:49:13 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:57:06 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define HEIGHT 600
 # define MINI_WIDTH 200
 # define MINI_HEIGHT 200
-# define FPS 60.0
 # define SPEED 5.0
 # define ROTATE_SPEED 3.0
 
@@ -81,6 +80,8 @@ typedef struct s_data
 	t_vector	plane;
 	t_dda	ray;
 	float	plane_ratio;
+	float	time;
+	float	frame_time;
 }	t_data;
 
 /*Parse functions*/
