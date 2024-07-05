@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 10:46:59 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:50:16 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,11 @@ void	rotate_player(t_data *game, float speed)
 	float	old_x;
 
 	old_x = game->dir.x;
-//	game->dir.x = game->dir.x * cos(speed / FPS) - game->dir.y * sin(speed / FPS);
-//	game->dir.y = old_x * cos(speed / FPS) + game->dir.y * sin(speed / FPS);
-//	old_x = game->plane.x;
-//	game->plane.x = game->plane.x * cos(speed / FPS) - game->plane.y * sin(speed / FPS);
-//	game->plane.y = old_x * cos(speed / FPS) + game->plane.y * sin(speed / FPS);
-	game->dir.x = game->dir.x * cos(speed) - game->dir.y * sin(speed);
-	game->dir.y = old_x * cos(speed) + game->dir.y * sin(speed);
+	game->dir.x = game->dir.x * cos(speed / FPS) - game->dir.y * sin(speed / FPS);
+	game->dir.y = old_x * sin(speed / FPS) + game->dir.y * cos(speed / FPS);
 	old_x = game->plane.x;
-	game->plane.x = game->plane.x * cos(speed) - game->plane.y * sin(speed);
-	game->plane.y = old_x * cos(speed) + game->plane.y * sin(speed);
-	printf("dir x: %f\n", game->dir.x);
-//	printf("dir y: %f\n", game->dir.y);
-//	printf("plane x: %f\n", game->plane.x);
-//	printf("plane y: %f\n", game->plane.y);
+	game->plane.x = game->plane.x * cos(speed / FPS) - game->plane.y * sin(speed / FPS);
+	game->plane.y = old_x * sin(speed / FPS) + game->plane.y * cos(speed / FPS);
 }
 
 void	key_press(void *param)
@@ -78,10 +69,10 @@ void	key_press(void *param)
 		move_player_left(game, SPEED);
 	if (mlx_is_key_down(game->screen, MLX_KEY_D))
 		move_player_right(game, SPEED);
-//	if (mlx_is_key_down(game->screen, MLX_KEY_RIGHT))
-//		rotate_player(game, -ROTATE_SPEED);
-//	if (mlx_is_key_down(game->screen, MLX_KEY_LEFT))
-//		rotate_player(game, ROTATE_SPEED);
+	if (mlx_is_key_down(game->screen, MLX_KEY_RIGHT))
+		rotate_player(game, -ROTATE_SPEED);
+	if (mlx_is_key_down(game->screen, MLX_KEY_LEFT))
+		rotate_player(game, ROTATE_SPEED);
 }
 
 int	end_game(void *param)

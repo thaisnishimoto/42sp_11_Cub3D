@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 00:30:18 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:49:13 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
-# include <float.h>
 
 /*Macros*/
 # define WIDTH 800
@@ -29,7 +28,7 @@
 # define MINI_HEIGHT 200
 # define FPS 60.0
 # define SPEED 5.0
-# define ROTATE_SPEED 0.04
+# define ROTATE_SPEED 3.0
 
 /*Structs*/
 typedef struct s_vector

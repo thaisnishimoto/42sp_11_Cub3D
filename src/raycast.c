@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/03 16:05:47 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:34:35 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	calculate_ray_deltas(t_dda *ray)
 {
 	if (ray->dir.x == 0)
-		ray->delta_dist.x = FLT_MAX;
+		ray->delta_dist.x = HUGE_VALF;
 	else
 		ray->delta_dist.x = fabs(1 / ray->dir.x);
 	if (ray->dir.y == 0)
-		ray->delta_dist.y = FLT_MAX;
+		ray->delta_dist.y = HUGE_VALF;
 	else
 		ray->delta_dist.y = fabs(1 / ray->dir.y);
 }
