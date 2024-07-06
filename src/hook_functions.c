@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 14:56:26 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/06 01:11:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	key_press(void *param)
 	if (mlx_is_key_down(game->screen, MLX_KEY_D))
 		move_player_right(game, SPEED);
 	if (mlx_is_key_down(game->screen, MLX_KEY_RIGHT))
-		rotate_player(game, -ROTATE_SPEED);
-	if (mlx_is_key_down(game->screen, MLX_KEY_LEFT))
 		rotate_player(game, ROTATE_SPEED);
+	if (mlx_is_key_down(game->screen, MLX_KEY_LEFT))
+		rotate_player(game, -ROTATE_SPEED);
 }
 
 int	end_game(void *param)
