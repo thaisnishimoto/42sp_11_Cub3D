@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 14:57:06 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:11:33 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ typedef struct s_data
 	t_vector	plane;
 	t_dda	ray;
 	float	plane_ratio;
-	float	time;
 	float	frame_time;
 }	t_data;
 

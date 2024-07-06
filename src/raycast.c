@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 14:41:55 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/06 00:26:35 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,25 @@ void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 	}
 }
 
-void	update_frame_time(t_data *game)
+void	update_fps(t_data *game)
 {
-	float	old_time;
+	char	*fps;
+	char	*fps_str;
+	static int	i;
+	static mlx_image_t	*fps_img;
 
-	old_time = game->time;
-	game->time = mlx_get_time();
-	game->frame_time = game->time - old_time;
-	printf("FPS = %f\n", 1 / game->frame_time);
+	game->frame_time = game->screen->delta_time;
+	if (i++ % 15 == 0)
+	{
+		fps = ft_itoa(1 / game->frame_time);
+		fps_str = ft_strjoin("FPS: ", fps);
+		free(fps);
+		if (fps_img)
+			mlx_delete_image(game->screen, fps_img);
+		fps_img = mlx_put_string(game->screen, fps_str, WIDTH - 75, HEIGHT - 20);
+		fps_img->instances->z = 5;
+		free(fps_str);
+	}
 }
 
 void	raycast(void *param)
@@ -115,7 +126,7 @@ void	raycast(void *param)
 	t_dda	ray;
 
 	game = param;
-	update_frame_time(game);
+	update_fps(game);
 	if (game->wall_img)
 		mlx_delete_image(game->screen, game->wall_img);
 	game->wall_img = mlx_new_image(game->screen, WIDTH, HEIGHT);
