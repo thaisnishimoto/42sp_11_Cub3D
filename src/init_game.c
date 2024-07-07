@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 12:03:34 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/06 23:37:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ void	draw_background(t_data *game)
 	game->background_img->instances->z = 1;
 }
 
+void	cursor_movement(double mouse_x, double mouse_y, void *param)
+{
+	t_data	*game;
+	static float	old_x;
+
+	(void)mouse_y;
+	game = param;
+	if (mouse_x - old_x > 0)
+		rotate_player(game, ROTATE_SPEED);
+	else if (mouse_x - old_x < 0)
+		rotate_player(game, -ROTATE_SPEED);
+	old_x = mouse_x;
+}
+
 void	init_game(t_data *game)
 {
 	game->screen = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
@@ -46,8 +60,12 @@ void	init_game(t_data *game)
         	handle_error("Mlx init failed.", 0);
 	draw_background(game);
 	draw_minimap(game);
+//	mlx_set_cursor_mode(game->screen, MLX_MOUSE_DISABLED);
+//	game->cursor = mlx_create_std_cursor(MLX_CURSOR_CROSSHAIR);
+//	mlx_set_cursor(game->screen, game->cursor);
 	mlx_close_hook(game->screen, (void *)end_game, game);
 	mlx_loop_hook(game->screen, key_press, game);
+	mlx_cursor_hook(game->screen, cursor_movement, game);
 	mlx_loop_hook(game->screen, render_player, game);
 	mlx_loop_hook(game->screen, raycast, game);
 	mlx_loop(game->screen);

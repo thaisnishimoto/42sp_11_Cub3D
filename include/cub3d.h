@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/05 19:11:33 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/06 23:38:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,8 @@ int		end_game(void *param);
 void	render_player(void *param);
 void	draw_line(t_data *game, t_vector *point1, int scale);
 void    raycast(void *param);
+
+/*Move functions*/
+void	rotate_player(t_data *game, float speed);
 
 #endif
