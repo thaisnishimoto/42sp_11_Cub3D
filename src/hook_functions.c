@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/06 22:58:58 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/07 13:00:51 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,49 @@
 void	move_player(t_data *game, float speed)
 {
 	t_vector	velocity;
+	int	new_map_x;
+	int	new_map_y;
 
-	velocity.x = game->dir.x * speed;
-	velocity.y = game->dir.y * speed;
-	game->player.x += velocity.x * game->frame_time;
-	game->player.y += velocity.y * game->frame_time;
+	velocity.x = game->dir.x * speed * game->frame_time;
+	velocity.y = game->dir.y * speed * game->frame_time;
+	new_map_x = floor(game->player.x + velocity.x);
+	new_map_y = floor(game->player.y + velocity.y);
+	if (game->map.layout[(int)game->player.y][new_map_x] == '0')
+		game->player.x += velocity.x;
+	if (game->map.layout[new_map_y][(int)game->player.x] == '0')
+		game->player.y += velocity.y;
 }
 
 void	move_player_left(t_data *game, float speed)
 {
 	t_vector	velocity;
+	int	new_map_x;
+	int	new_map_y;
 
-	velocity.x = game->dir.y * speed;
-	velocity.y = -game->dir.x * speed;
-	game->player.x += velocity.x * game->frame_time;
-	game->player.y += velocity.y * game->frame_time;
+	velocity.x = game->dir.y * speed * game->frame_time;
+	velocity.y = -game->dir.x * speed * game->frame_time;
+	new_map_x = game->player.x + velocity.x;
+	new_map_y = game->player.y + velocity.y;
+	if (game->map.layout[(int)game->player.y][new_map_x] == '0')
+		game->player.x += velocity.x;
+	if (game->map.layout[new_map_y][(int)game->player.x] == '0')
+		game->player.y += velocity.y;
 }
 
 void	move_player_right(t_data *game, float speed)
 {
 	t_vector	velocity;
+	int	new_map_x;
+	int	new_map_y;
 
-	velocity.x = -game->dir.y * speed;
-	velocity.y = game->dir.x * speed;
-	game->player.x += velocity.x * game->frame_time;
-	game->player.y += velocity.y * game->frame_time;
+	velocity.x = -game->dir.y * speed * game->frame_time;
+	velocity.y = game->dir.x * speed * game->frame_time;
+	new_map_x = game->player.x + velocity.x;
+	new_map_y = game->player.y + velocity.y;
+	if (game->map.layout[(int)game->player.y][new_map_x] == '0')
+		game->player.x += velocity.x;
+	if (game->map.layout[new_map_y][(int)game->player.x] == '0')
+		game->player.y += velocity.y;
 }
 
 void	rotate_player(t_data *game, float speed)

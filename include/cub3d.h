@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/06 23:38:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/07 01:27:37 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define HEIGHT 600
 # define MINI_WIDTH 200
 # define MINI_HEIGHT 200
-# define SPEED 5.0
+# define SPEED 3.0
 # define ROTATE_SPEED 3.0
 
 /*Structs*/
