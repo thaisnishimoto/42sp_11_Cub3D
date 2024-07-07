@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/06 00:26:35 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/07 12:37:29 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 	if (line_start < 0)
 		line_start = 0;
 	line_end = HEIGHT / 2 + wall_height / 2;
-	if (line_start >= HEIGHT)
-		line_start = HEIGHT - 1;
+	if (line_end >= HEIGHT)
+		line_end = HEIGHT - 1;
 	pixel_y = line_start;
 	while (pixel_y < line_end)
 	{
