@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/07 13:00:51 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:31:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	end_game(void *param)
 	mlx_terminate(game->screen);
 	ft_free_matrix(game->map.content);
 	free(game);
+//	mlx_delete_texture;
 //	for handle_error call
 //	if (game->config_stage < 4)
 //		return (1);

@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/07 01:27:37 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/08 12:33:54 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_map
 	char	*south_tex_path;
 	char	*west_tex_path;
 	char	*east_tex_path;
+	mlx_texture_t	*north_texture;
+	mlx_texture_t	*south_texture;
+	mlx_texture_t	*west_texture;
+	mlx_texture_t	*east_texture;
 	uint32_t	floor_color;
 	uint32_t	ceiling_color;
 	char	**layout;
