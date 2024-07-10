@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/10 10:55:16 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:54:40 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_dda
 	int	hit_side;
 	float	perp_dist;
 	mlx_texture_t	*texture;
+	t_vector	tex;
 	int	color;
 }	t_dda;
 
@@ -111,5 +112,8 @@ void    raycast(void *param);
 
 /*Move functions*/
 void	rotate_player(t_data *game, float speed);
+
+/*Texture functions*/
+void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 
 #endif

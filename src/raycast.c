@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/10 10:58:37 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:26:33 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,63 +69,6 @@ void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
 		ray->perp_dist = ray->dist_side.y - ray->delta_dist.y;
 }
 
-void	choose_texture(t_data *game, t_dda *ray)
-{
-	if (ray->hit_side == 0)
-	{
-		if (ray->step_x > 0)
-			ray->texture = game->map.east_texture;
-		else
-			ray->texture = game->map.west_texture;
-	}
-	else
-	{
-		if (ray->step_y > 0)
-			ray->texture = game->map.south_texture;
-		else
-			ray->texture = game->map.north_texture;
-	}
-}
-
-void	calculate_hitpoint_pos(t_data *game, t_dda *ray)
-{
-	float	wall_hit_x;
-
-	if (ray->hit_side == 0)
-		wall_hit_x = game->player.x + ray->perp_dist * ray->dir.x;
-	else
-		wall_hit_x = game->player.y + ray->perp_dist * ray->dir.y;
-}
-
-void	render_wall_line_to_screen(t_data *game, t_dda *ray)
-{
-	int	wall_height;
-	int	line_start;
-	int	line_end;
-	int	pixel_y;
-
-	wall_height = HEIGHT / ray->perp_dist;
-	line_start = HEIGHT / 2 - wall_height / 2;
-	if (line_start < 0)
-		line_start = 0;
-	line_end = HEIGHT / 2 + wall_height / 2;
-	if (line_end >= HEIGHT)
-		line_end = HEIGHT - 1;
-	pixel_y = line_start;
-	while (pixel_y < line_end)
-	{
-		mlx_put_pixel(game->wall_img, ray->pixel_x, pixel_y, ray->color); 
-		pixel_y++;
-	}
-}
-
-void	render_wall_tex_to_screen(t_data *game, t_dda *ray)
-{
-	choose_texture(game, &ray);
-	calculate_hitpoint_pos(t_data *game, t_dda *ray)
-
-}
-
 void	update_fps(t_data *game)
 {
 	char	*fps;
@@ -171,8 +114,7 @@ void	raycast(void *param)
 		calculate_ray_initial_dist_to_sides(game, &ray);
 		calculate_ray_dist_to_wall(game, &ray);
 		//draw fov current ray
-		choose_wall_texture(game, &ray);
-		render_wall_line_to_screen(game, &ray);
+		render_wall_tex_to_screen(game, &ray);
 		ray.pixel_x++;
 	}
 	if (mlx_image_to_window(game->screen, game->wall_img, 0, 0) < 0)
