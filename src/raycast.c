@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/07 12:52:18 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/10 10:58:37 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,32 @@ void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
 		ray->perp_dist = ray->dist_side.y - ray->delta_dist.y;
 }
 
-void	choose_wall_texture(t_dda *ray)
+void	choose_texture(t_data *game, t_dda *ray)
 {
 	if (ray->hit_side == 0)
-		ray->color = 0x0000FFFF;
+	{
+		if (ray->step_x > 0)
+			ray->texture = game->map.east_texture;
+		else
+			ray->texture = game->map.west_texture;
+	}
 	else
-		ray->color = 0x000088FF;
+	{
+		if (ray->step_y > 0)
+			ray->texture = game->map.south_texture;
+		else
+			ray->texture = game->map.north_texture;
+	}
+}
+
+void	calculate_hitpoint_pos(t_data *game, t_dda *ray)
+{
+	float	wall_hit_x;
+
+	if (ray->hit_side == 0)
+		wall_hit_x = game->player.x + ray->perp_dist * ray->dir.x;
+	else
+		wall_hit_x = game->player.y + ray->perp_dist * ray->dir.y;
 }
 
 void	render_wall_line_to_screen(t_data *game, t_dda *ray)
@@ -97,6 +117,13 @@ void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 		mlx_put_pixel(game->wall_img, ray->pixel_x, pixel_y, ray->color); 
 		pixel_y++;
 	}
+}
+
+void	render_wall_tex_to_screen(t_data *game, t_dda *ray)
+{
+	choose_texture(game, &ray);
+	calculate_hitpoint_pos(t_data *game, t_dda *ray)
+
 }
 
 void	update_fps(t_data *game)
@@ -144,7 +171,7 @@ void	raycast(void *param)
 		calculate_ray_initial_dist_to_sides(game, &ray);
 		calculate_ray_dist_to_wall(game, &ray);
 		//draw fov current ray
-		choose_wall_texture(&ray);
+		choose_wall_texture(game, &ray);
 		render_wall_line_to_screen(game, &ray);
 		ray.pixel_x++;
 	}
