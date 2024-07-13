@@ -6,11 +6,19 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/08 14:31:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:34:12 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	get_signal(float num)
+{
+	if (num < 0)
+		return (-1);
+	else
+		return (1);
+}
 
 void	move_player(t_data *game, float speed)
 {
@@ -20,8 +28,8 @@ void	move_player(t_data *game, float speed)
 
 	velocity.x = game->dir.x * speed * game->frame_time;
 	velocity.y = game->dir.y * speed * game->frame_time;
-	new_map_x = floor(game->player.x + velocity.x);
-	new_map_y = floor(game->player.y + velocity.y);
+	new_map_x = floor(game->player.x + velocity.x + get_signal(velocity.x) * WALL_OFFSET);
+	new_map_y = floor(game->player.y + velocity.y + get_signal(velocity.y) * WALL_OFFSET);
 	if (game->map.layout[(int)game->player.y][new_map_x] == '0')
 		game->player.x += velocity.x;
 	if (game->map.layout[new_map_y][(int)game->player.x] == '0')
@@ -36,8 +44,8 @@ void	move_player_left(t_data *game, float speed)
 
 	velocity.x = game->dir.y * speed * game->frame_time;
 	velocity.y = -game->dir.x * speed * game->frame_time;
-	new_map_x = game->player.x + velocity.x;
-	new_map_y = game->player.y + velocity.y;
+	new_map_x = game->player.x + velocity.x + get_signal(velocity.x) * WALL_OFFSET;
+	new_map_y = game->player.y + velocity.y + get_signal(velocity.y) * WALL_OFFSET;
 	if (game->map.layout[(int)game->player.y][new_map_x] == '0')
 		game->player.x += velocity.x;
 	if (game->map.layout[new_map_y][(int)game->player.x] == '0')
@@ -52,8 +60,8 @@ void	move_player_right(t_data *game, float speed)
 
 	velocity.x = -game->dir.y * speed * game->frame_time;
 	velocity.y = game->dir.x * speed * game->frame_time;
-	new_map_x = game->player.x + velocity.x;
-	new_map_y = game->player.y + velocity.y;
+	new_map_x = game->player.x + velocity.x + get_signal(velocity.x) * WALL_OFFSET;
+	new_map_y = game->player.y + velocity.y + get_signal(velocity.y) * WALL_OFFSET;
 	if (game->map.layout[(int)game->player.y][new_map_x] == '0')
 		game->player.x += velocity.x;
 	if (game->map.layout[new_map_y][(int)game->player.x] == '0')
