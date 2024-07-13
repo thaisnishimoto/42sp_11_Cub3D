@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:22:20 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/11 21:56:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/13 19:35:07 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	calculate_hitpoint_pos(t_data *game, t_dda *ray)
 		wall_hit_x = game->player.x + ray->perp_dist * ray->dir.x;
 	wall_hit_x -= floor(wall_hit_x);
 	ray->tex.x = (int)(ray->texture->width * wall_hit_x);
-//	if ((ray->hitside == 0 && ray->dir.x < 0) || (ray->hitside == 1 && ray->dir.y > 0))
-//		ray->tex.x = ray->texture.width - ray->tex.x
+	if ((ray->hit_side == 0 && ray->dir.x < 0) || (ray->hit_side == 1 && ray->dir.y > 0))
+		ray->tex.x = ray->texture->width - ray->tex.x;
 }
 
 //void	calculate_wall_measures(t_data *game, t_dda *ray)
