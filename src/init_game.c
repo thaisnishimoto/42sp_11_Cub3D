@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/06 23:37:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/15 22:31:22 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	init_game(t_data *game)
 	game->screen = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
 	if (!game->screen)
         	handle_error("Mlx init failed.", 0);
+	load_weapon_textures(game);
 	draw_background(game);
 	draw_minimap(game);
 //	mlx_set_cursor_mode(game->screen, MLX_MOUSE_DISABLED);
@@ -66,6 +67,7 @@ void	init_game(t_data *game)
 	mlx_close_hook(game->screen, (void *)end_game, game);
 	mlx_loop_hook(game->screen, key_press, game);
 	mlx_cursor_hook(game->screen, cursor_movement, game);
+	mlx_loop_hook(game->screen, mouse_click, game);
 	mlx_loop_hook(game->screen, render_player, game);
 	mlx_loop_hook(game->screen, raycast, game);
 	mlx_loop(game->screen);

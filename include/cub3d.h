@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/13 18:13:04 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/15 23:43:47 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define SPEED 3.0
 # define ROTATE_SPEED 3.0
 # define WALL_OFFSET 0.25
+# define WEAPON_FRAMES 5
+# define REPEAT_FRAME 5
 
 /*Structs*/
 typedef struct s_vector
@@ -50,6 +52,7 @@ typedef struct s_map
 	mlx_texture_t	*south_texture;
 	mlx_texture_t	*west_texture;
 	mlx_texture_t	*east_texture;
+	mlx_texture_t	*weapon_texture[WEAPON_FRAMES];
 	uint32_t	floor_color;
 	uint32_t	ceiling_color;
 	char	**layout;
@@ -82,6 +85,8 @@ typedef struct s_data
 	mlx_image_t	*minimap_img;
 	mlx_image_t	*player_img;
 	mlx_image_t	*wall_img;
+	mlx_image_t	*weapon_img[WEAPON_FRAMES];
+	bool	shoot;
 	t_vector	player;
 	t_vector	dir;
 	t_vector	plane;
@@ -103,6 +108,7 @@ void	handle_error(char *msg, int errno_set);
 /*Run game*/
 void	init_game(t_data *game);
 void	draw_minimap(t_data *game);
+void	load_weapon_textures(t_data *game);
 
 /*Hook functions*/
 void	key_press(void *param);
@@ -110,11 +116,15 @@ int		end_game(void *param);
 void	render_player(void *param);
 void	draw_line(t_data *game, t_vector *point1, int scale);
 void    raycast(void *param);
+void	mouse_click(void *param);
 
 /*Move functions*/
 void	rotate_player(t_data *game, float speed);
 
 /*Texture functions*/
 void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
+
+/*Shoot functions*/
+void	shoot_weapon(t_data *game);
 
 #endif

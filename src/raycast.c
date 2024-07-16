@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/10 14:26:33 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/15 23:53:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	update_fps(t_data *game)
 		if (fps_img)
 			mlx_delete_image(game->screen, fps_img);
 		fps_img = mlx_put_string(game->screen, fps_str, WIDTH - 75, HEIGHT - 20);
-		fps_img->instances->z = 5;
+		fps_img->instances->z = 6;
 		free(fps_str);
 	}
 }
