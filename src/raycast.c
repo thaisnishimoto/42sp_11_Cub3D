@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/15 23:53:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/17 14:47:13 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	raycast(void *param)
 		mlx_delete_image(game->screen, game->wall_img);
 	game->wall_img = mlx_new_image(game->screen, WIDTH, HEIGHT);
 	if (!game->wall_img)
-        	handle_error("Wall image creation failed.", 0);
+        	handle_error("Wall image creation failed", game, 0);
 	ray.pixel_x = 0;
 	while (ray.pixel_x < WIDTH)
 	{
@@ -118,7 +118,7 @@ void	raycast(void *param)
 		ray.pixel_x++;
 	}
 	if (mlx_image_to_window(game->screen, game->wall_img, 0, 0) < 0)
-        	handle_error("Wall image render failed.", 0);
+        	handle_error("Wall image render failed", game, 0);
 	game->wall_img->instances->z = 2;
 //	mlx_set_instance_depth(game->wall_img->instances, 2);
 }

@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/15 23:43:47 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/17 14:54:34 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_map
 	mlx_texture_t	*west_texture;
 	mlx_texture_t	*east_texture;
 	mlx_texture_t	*weapon_texture[WEAPON_FRAMES];
-	uint32_t	floor_color;
-	uint32_t	ceiling_color;
+	int32_t	floor_color;
+	int32_t	ceiling_color;
 	char	**layout;
 	size_t	layout_rows;
 	size_t	layout_columns;
@@ -103,7 +103,8 @@ void	get_map_layout(t_data *game);
 void	get_player_pos(t_data *game);
 char	*skip_spaces(char *str);
 
-void	handle_error(char *msg, int errno_set);
+/*End game*/
+void	handle_error(char *msg, t_data *game, int stage);
 
 /*Run game*/
 void	init_game(t_data *game);

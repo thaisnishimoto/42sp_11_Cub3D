@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/13 16:34:12 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:46:45 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,23 +99,4 @@ void	key_press(void *param)
 		rotate_player(game, ROTATE_SPEED);
 	if (mlx_is_key_down(game->screen, MLX_KEY_LEFT))
 		rotate_player(game, -ROTATE_SPEED);
-}
-
-int	end_game(void *param)
-{
-	t_data	*game;
-
-	game = param;
-	mlx_close_window(game->screen);
-	mlx_delete_image(game->screen, game->background_img);
-	mlx_delete_image(game->screen, game->minimap_img);
-	mlx_delete_image(game->screen, game->player_img);
-	mlx_terminate(game->screen);
-	ft_free_matrix(game->map.content);
-	free(game);
-//	mlx_delete_texture;
-//	for handle_error call
-//	if (game->config_stage < 4)
-//		return (1);
-	exit (EXIT_SUCCESS);
 }
