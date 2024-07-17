@@ -1,7 +1,7 @@
-NO ./textures/wolf_bluestone.png
-SO ./textures/wolf_redbrick.png
-WE ./textures/wolf_greystone.png
-EA ./textures/wolf_wood.png
+NO ./textures/wolf_map/bluestone.png
+SO ./textures/wolf_map/redbrick.png
+WE ./textures/wolf_map/greystone.png
+EA ./textures/wolf_map/wood.png
 
 F 113,113,113
 
