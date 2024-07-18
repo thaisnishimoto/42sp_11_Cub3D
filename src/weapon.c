@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:12:43 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/15 23:53:41 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:48:19 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	load_weapon_textures(t_data *game)
 {
@@ -24,10 +24,10 @@ void	load_weapon_textures(t_data *game)
 	i = 0;
 	while (i < WEAPON_FRAMES)
 	{
-		game->weapon_img[i] = mlx_texture_to_image(game->screen, game->map.weapon_texture[i]);
+		game->weapon_img[i] = mlx_texture_to_image(game->mlx, game->map.weapon_texture[i]);
 		//handle_error("Player image render failed.", 0);
 		game->weapon_img[i]->enabled = false;
-		mlx_image_to_window(game->screen, game->weapon_img[i], WIDTH / 2, HEIGHT - game->weapon_img[i]->height);
+		mlx_image_to_window(game->mlx, game->weapon_img[i], WIDTH / 2, HEIGHT - game->weapon_img[i]->height);
 		game->weapon_img[i]->instances->z = 5;
 		i++;
 	}
@@ -47,7 +47,7 @@ void	mouse_click(void *param)
 	t_data	*game;
 
 	game = param;
-	if (game->shoot || mlx_is_mouse_down(game->screen, MLX_MOUSE_BUTTON_LEFT))
+	if (game->shoot || mlx_is_mouse_down(game->mlx, MLX_MOUSE_BUTTON_LEFT))
 		shoot_weapon(game);
 }
 

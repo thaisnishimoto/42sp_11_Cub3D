@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/17 14:54:34 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:23:49 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define ROTATE_SPEED 3.0
 # define WALL_OFFSET 0.25
 # define WEAPON_FRAMES 5
-# define REPEAT_FRAME 5
+# define REPEAT_FRAME 4
 
 /*Structs*/
 typedef struct s_vector
@@ -38,6 +38,12 @@ typedef struct s_vector
 	float	x;
 	float	y;
 }	t_vector;
+
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
 
 typedef struct s_map
 {
@@ -80,7 +86,7 @@ typedef struct s_dda
 typedef struct s_data
 {
 	t_map	map;
-	mlx_t	*screen;
+	mlx_t	*mlx;
 	mlx_image_t	*background_img;
 	mlx_image_t	*minimap_img;
 	mlx_image_t	*player_img;
@@ -103,29 +109,29 @@ void	get_map_layout(t_data *game);
 void	get_player_pos(t_data *game);
 char	*skip_spaces(char *str);
 
-/*End game*/
-void	handle_error(char *msg, t_data *game, int stage);
-
 /*Run game*/
 void	init_game(t_data *game);
+void	draw_background(t_data *game);
 void	draw_minimap(t_data *game);
 void	load_weapon_textures(t_data *game);
 
-/*Hook functions*/
-void	key_press(void *param);
-int		end_game(void *param);
-void	render_player(void *param);
+/*Draw functions*/
+void	draw_miniplayer(void *param);
 void	draw_line(t_data *game, t_vector *point1, int scale);
+void    draw_tile(mlx_image_t *img, t_vector *pos, size_t size, int color);
 void    raycast(void *param);
-void	mouse_click(void *param);
-
-/*Move functions*/
-void	rotate_player(t_data *game, float speed);
 
 /*Texture functions*/
 void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 
-/*Shoot functions*/
+/*Control functions*/
+void	key_press(void *param);
+void	mouse_click(void *param);
+void	rotate_player(t_data *game, float speed);
 void	shoot_weapon(t_data *game);
+
+/*End game*/
+void	handle_error(char *msg, t_data *game, int stage);
+void	end_game(void *param);
 
 #endif

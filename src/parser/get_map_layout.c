@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/17 14:54:10 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:48:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	get_map_layout(t_data *game)
 {

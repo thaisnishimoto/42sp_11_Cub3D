@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:22:20 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/13 19:35:07 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:48:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	choose_texture(t_data *game, t_dda *ray)
 {

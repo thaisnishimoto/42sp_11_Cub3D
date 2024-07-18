@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/06/26 12:26:19 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/07/18 12:32:49 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MAKE_NO_PRINT = $(MAKE) --no-print-directory
 LIBFT_PATH = ./libft
 MLX_PATH = ./MLX42/build
 SRC_PATH = ./src
-HEADERS	:= -I $(LIBFT_PATH) -I ./MLX42/include/MLX42
+HEADERS	:= -I ./include -I $(LIBFT_PATH) -I ./MLX42/include/MLX42
 
 #================================FILES=========================================#
 

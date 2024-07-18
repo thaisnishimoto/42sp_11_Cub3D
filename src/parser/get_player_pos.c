@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/06/28 17:44:49 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:57:01 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	get_player_pos(t_data *game)
 {

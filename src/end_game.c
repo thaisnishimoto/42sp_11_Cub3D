@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:46:22 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/17 14:01:51 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:55:44 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	handle_error(char *msg, t_data *game, int stage)
 {
@@ -22,16 +22,16 @@ void	handle_error(char *msg, t_data *game, int stage)
 	exit(EXIT_FAILURE);
 }
 
-int	end_game(void *param)
+void	end_game(void *param)
 {
 	t_data	*game;
 
 	game = param;
-	mlx_close_window(game->screen);
-	mlx_delete_image(game->screen, game->background_img);
-	mlx_delete_image(game->screen, game->minimap_img);
-	mlx_delete_image(game->screen, game->player_img);
-	mlx_terminate(game->screen);
+	mlx_close_window(game->mlx);
+	mlx_delete_image(game->mlx, game->background_img);
+	mlx_delete_image(game->mlx, game->minimap_img);
+	mlx_delete_image(game->mlx, game->player_img);
+	mlx_terminate(game->mlx);
 	ft_free_matrix(game->map.content);
 	free(game);
 //	mlx_delete_texture;

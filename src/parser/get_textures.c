@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/08 18:33:44 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:57:17 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 //And replaces new line at end for \0
 char	*skip_spaces(char *str)

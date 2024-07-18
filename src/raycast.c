@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/17 14:47:13 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:47:15 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	calculate_ray_deltas(t_dda *ray)
 {
@@ -76,15 +76,15 @@ void	update_fps(t_data *game)
 	static int	i;
 	static mlx_image_t	*fps_img;
 
-	game->frame_time = game->screen->delta_time;
+	game->frame_time = game->mlx->delta_time;
 	if (i++ % 15 == 0)
 	{
 		fps = ft_itoa(1 / game->frame_time);
 		fps_str = ft_strjoin("FPS: ", fps);
 		free(fps);
 		if (fps_img)
-			mlx_delete_image(game->screen, fps_img);
-		fps_img = mlx_put_string(game->screen, fps_str, WIDTH - 75, HEIGHT - 20);
+			mlx_delete_image(game->mlx, fps_img);
+		fps_img = mlx_put_string(game->mlx, fps_str, WIDTH - 75, HEIGHT - 20);
 		fps_img->instances->z = 6;
 		free(fps_str);
 	}
@@ -98,8 +98,8 @@ void	raycast(void *param)
 	game = param;
 	update_fps(game);
 	if (game->wall_img)
-		mlx_delete_image(game->screen, game->wall_img);
-	game->wall_img = mlx_new_image(game->screen, WIDTH, HEIGHT);
+		mlx_delete_image(game->mlx, game->wall_img);
+	game->wall_img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->wall_img)
         	handle_error("Wall image creation failed", game, 0);
 	ray.pixel_x = 0;
@@ -117,7 +117,7 @@ void	raycast(void *param)
 		render_wall_tex_to_screen(game, &ray);
 		ray.pixel_x++;
 	}
-	if (mlx_image_to_window(game->screen, game->wall_img, 0, 0) < 0)
+	if (mlx_image_to_window(game->mlx, game->wall_img, 0, 0) < 0)
         	handle_error("Wall image render failed", game, 0);
 	game->wall_img->instances->z = 2;
 //	mlx_set_instance_depth(game->wall_img->instances, 2);

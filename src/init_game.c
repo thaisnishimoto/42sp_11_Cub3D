@@ -6,38 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/17 14:45:29 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:23:11 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
-void	draw_background(t_data *game)
-{
-	int	x;
-	int	y;
-
-	game->background_img = mlx_new_image(game->screen, WIDTH, HEIGHT);
-	if (!game->background_img)
-        	handle_error("Background image creation failed", game, 1);
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			if (y < HEIGHT / 2)
-				mlx_put_pixel(game->background_img, x, y, game->map.ceiling_color);
-			else
-				mlx_put_pixel(game->background_img, x, y, game->map.floor_color);
-			x++;
-		}
-		y++;
-	}
-	if (mlx_image_to_window(game->screen, game->background_img, 0, 0) < 0)
-        	handle_error("Background image render failed", game, 1);
-	game->background_img->instances->z = 1;
-}
+#include "cub3d.h"
 
 void	cursor_movement(double mouse_x, double mouse_y, void *param)
 {
@@ -55,20 +28,17 @@ void	cursor_movement(double mouse_x, double mouse_y, void *param)
 
 void	init_game(t_data *game)
 {
-	game->screen = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
-	if (!game->screen)
-        	handle_error("Mlx init failed", game, 0);
-	load_weapon_textures(game);
+	game->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
+	if (!game->mlx)
+        	handle_error("Mlx init failed", game, 1);
 	draw_background(game);
 	draw_minimap(game);
-//	mlx_set_cursor_mode(game->screen, MLX_MOUSE_DISABLED);
-//	game->cursor = mlx_create_std_cursor(MLX_CURSOR_CROSSHAIR);
-//	mlx_set_cursor(game->screen, game->cursor);
-	mlx_close_hook(game->screen, (void *)end_game, game);
-	mlx_loop_hook(game->screen, key_press, game);
-	mlx_cursor_hook(game->screen, cursor_movement, game);
-	mlx_loop_hook(game->screen, mouse_click, game);
-	mlx_loop_hook(game->screen, render_player, game);
-	mlx_loop_hook(game->screen, raycast, game);
-	mlx_loop(game->screen);
+	load_weapon_textures(game);
+	mlx_close_hook(game->mlx, end_game, game);
+	mlx_loop_hook(game->mlx, key_press, game);
+	mlx_cursor_hook(game->mlx, cursor_movement, game);
+	mlx_loop_hook(game->mlx, mouse_click, game);
+	mlx_loop_hook(game->mlx, draw_miniplayer, game);
+	mlx_loop_hook(game->mlx, raycast, game);
+	mlx_loop(game->mlx);
 }
