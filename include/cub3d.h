@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 15:23:49 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 18:50:23 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_map
 	mlx_texture_t	*south_texture;
 	mlx_texture_t	*west_texture;
 	mlx_texture_t	*east_texture;
-	mlx_texture_t	*weapon_texture[WEAPON_FRAMES];
 	int32_t	floor_color;
 	int32_t	ceiling_color;
 	char	**layout;
@@ -87,11 +86,11 @@ typedef struct s_data
 {
 	t_map	map;
 	mlx_t	*mlx;
-	mlx_image_t	*background_img;
+	mlx_image_t	*back_img;
 	mlx_image_t	*minimap_img;
-	mlx_image_t	*player_img;
 	mlx_image_t	*wall_img;
-	mlx_image_t	*weapon_img[WEAPON_FRAMES];
+	mlx_image_t	*wand_img[WEAPON_FRAMES];
+	mlx_texture_t	*wand_texture[WEAPON_FRAMES];
 	bool	shoot;
 	t_vector	player;
 	t_vector	dir;
@@ -110,15 +109,17 @@ void	get_player_pos(t_data *game);
 char	*skip_spaces(char *str);
 
 /*Run game*/
-void	init_game(t_data *game);
+void	run_game(t_data *game);
+void	create_mlx_images(t_data *game);
 void	draw_background(t_data *game);
-void	draw_minimap(t_data *game);
+void	draw_minimap(void *param);
+//void	draw_minimap(t_data *game);
 void	load_weapon_textures(t_data *game);
 
 /*Draw functions*/
-void	draw_miniplayer(void *param);
+void	draw_miniplayer(t_data *game, int scale);
 void	draw_line(t_data *game, t_vector *point1, int scale);
-void    draw_tile(mlx_image_t *img, t_vector *pos, size_t size, int color);
+void    draw_tile(mlx_image_t *img, t_coord *pos, size_t size, int color);
 void    raycast(void *param);
 
 /*Texture functions*/
