@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 12:29:36 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:24:33 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int	main(int argc, char **argv)
 //		printf("%s", game->map.layout[i]);
 //		i++;
 //	}
-	init_game(game);
+	run_game(game);
 	return (EXIT_SUCCESS);
 }
