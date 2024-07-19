@@ -6,11 +6,25 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 12:47:39 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:00:22 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	cursor_movement(double mouse_x, double mouse_y, void *param)
+{
+	t_data	*game;
+	static float	old_x;
+
+	(void)mouse_y;
+	game = param;
+	if (mouse_x - old_x > 0)
+		rotate_player(game, ROTATE_SPEED);
+	else if (mouse_x - old_x < 0)
+		rotate_player(game, -ROTATE_SPEED);
+	old_x = mouse_x;
+}
 
 int	get_signal(float num)
 {
