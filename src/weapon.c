@@ -6,46 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:12:43 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 00:33:25 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:34:21 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	load_weapon_textures(t_data *game)
-{
-//	t_coord	pos;
-	int	i;
-
-	game->wand_texture[0] = mlx_load_png("./textures/weapon/wand_0.png");
-	game->wand_texture[1] = mlx_load_png("./textures/weapon/wand_1.png");
-	game->wand_texture[2] = mlx_load_png("./textures/weapon/wand_2.png");
-	game->wand_texture[3] = mlx_load_png("./textures/weapon/wand_3.png");
-	game->wand_texture[4] = mlx_load_png("./textures/weapon/wand_4.png");
-	i = 0;
-	while (i < WEAPON_FRAMES)
-	{
-		if (!game->wand_texture[i])
-			handle_error("Weapon texture load failed", game, 2);
-		i++;
-	}
-//	i = 0;
-//	while (i < WEAPON_FRAMES)
-//	{
-//		game->wand_img[i] = mlx_texture_to_image(game->mlx, game->wand_texture[i]);
-//		if (!game->wand_img[i])
-//			handle_error("Wand image creation failed", game, 2);
-//		game->wand_img[i]->enabled = false;
-//		pos.x = WIDTH / 2;
-//		pos.y = HEIGHT - game->wand_img[i]->height;
-//		if (mlx_image_to_window(game->mlx, game->wand_img[i], pos.x, pos.y) < 0)
-//			handle_error("Weapon image render failed", game, 2);
-//		game->wand_img[i]->instances->z = 4;
-//		i++;
-//	}
-//	game->shoot = false;
-//	game->wand_img[0]->enabled = true;
-}
 
 void	mouse_click(void *param)
 {

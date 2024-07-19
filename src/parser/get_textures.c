@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 12:57:17 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:36:27 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*skip_spaces(char *str)
 	return (str);
 }
 
-void	get_textures(t_data *game)
+void	get_wall_textures(t_data *game)
 {
 	int	i;
 
@@ -56,4 +56,22 @@ void	get_textures(t_data *game)
 		i++;
 	}
 	//check if any texture == NULL
+}
+
+void	get_weapon_textures(t_data *game)
+{
+	int	i;
+
+	game->wand_texture[0] = mlx_load_png("./textures/weapon/wand_0.png");
+	game->wand_texture[1] = mlx_load_png("./textures/weapon/wand_1.png");
+	game->wand_texture[2] = mlx_load_png("./textures/weapon/wand_2.png");
+	game->wand_texture[3] = mlx_load_png("./textures/weapon/wand_3.png");
+	game->wand_texture[4] = mlx_load_png("./textures/weapon/wand_4.png");
+	i = 0;
+	while (i < WEAPON_FRAMES)
+	{
+		if (!game->wand_texture[i])
+			handle_error("Weapon texture load failed", game, 1);
+		i++;
+	}
 }

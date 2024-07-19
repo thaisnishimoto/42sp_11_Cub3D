@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 22:57:32 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:38:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ typedef struct s_data
 
 /*Parse functions*/
 void	parse_map(t_data *game);
-void	get_textures(t_data *game);
+void	get_wall_textures(t_data *game);
+void	get_weapon_textures(t_data *game);
 void	get_background_colors(t_data *game);
 void	get_map_layout(t_data *game);
 void	get_player_pos(t_data *game);
@@ -115,7 +116,7 @@ void	create_mlx_images(t_data *game);
 void	draw_background(t_data *game);
 void	draw_minimap(void *param);
 //void	draw_minimap(t_data *game);
-void	load_weapon_textures(t_data *game);
+//void	load_weapon_textures(t_data *game);
 
 /*Draw functions*/
 void	draw_miniplayer(t_data *game, int scale);
