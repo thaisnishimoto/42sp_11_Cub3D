@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 12:47:15 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 23:13:15 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	update_fps(t_data *game)
 		if (fps_img)
 			mlx_delete_image(game->mlx, fps_img);
 		fps_img = mlx_put_string(game->mlx, fps_str, WIDTH - 75, HEIGHT - 20);
-		fps_img->instances->z = 6;
+		fps_img->instances->z = 4;
 		free(fps_str);
 	}
 }
@@ -96,12 +96,13 @@ void	raycast(void *param)
 	t_dda	ray;
 
 	game = param;
+	draw_background(game);
 	update_fps(game);
-	if (game->wall_img)
-		mlx_delete_image(game->mlx, game->wall_img);
-	game->wall_img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	if (!game->wall_img)
-        	handle_error("Wall image creation failed", game, 0);
+//	if (game->wall_img)
+//		mlx_delete_image(game->mlx, game->wall_img);
+//	game->wall_img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+//	if (!game->wall_img)
+//		handle_error("Wall image creation failed", game, 2);
 	ray.pixel_x = 0;
 	while (ray.pixel_x < WIDTH)
 	{
@@ -117,8 +118,8 @@ void	raycast(void *param)
 		render_wall_tex_to_screen(game, &ray);
 		ray.pixel_x++;
 	}
-	if (mlx_image_to_window(game->mlx, game->wall_img, 0, 0) < 0)
-        	handle_error("Wall image render failed", game, 0);
-	game->wall_img->instances->z = 2;
+//	if (mlx_image_to_window(game->mlx, game->wall_img, 0, 0) < 0)
+//		handle_error("Wall image render failed", game, 2);
+//	game->wall_img->instances->z = 2;
 //	mlx_set_instance_depth(game->wall_img->instances, 2);
 }

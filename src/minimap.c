@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 19:47:11 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 23:11:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ void	draw_minimap(void *param)
 		scale = MINI_HEIGHT / game->map.layout_rows;
 	else
 		scale = MINI_WIDTH / game->map.layout_columns;
-	if (game->minimap_img)
-		mlx_delete_image(game->mlx, game->minimap_img);
-	game->minimap_img = mlx_new_image(game->mlx, MINI_WIDTH, MINI_HEIGHT);
-	if (!game->minimap_img)
-        	handle_error("Minimap image creation failed", game, 1);
+//	if (game->minimap_img)
+//		mlx_delete_image(game->mlx, game->minimap_img);
+//	game->minimap_img = mlx_new_image(game->mlx, MINI_WIDTH, MINI_HEIGHT);
+//	if (!game->minimap_img)
+//		handle_error("Minimap image creation failed", game, 2);
 	draw_layout(game, scale);
 	draw_miniplayer(game, scale);
-	if (mlx_image_to_window(game->mlx, game->minimap_img, scale, scale) < 0)
-        	handle_error("Minimap image render failed", game, 0);
-	game->minimap_img->instances->z = 3;
+//	if (mlx_image_to_window(game->mlx, game->minimap_img, scale, scale) < 0)
+//		handle_error("Minimap image render failed", game, 2);
+//	game->minimap_img->instances->z = 3;
 }
 
 //void	draw_line(t_data *game, t_vector *point1, int scale)

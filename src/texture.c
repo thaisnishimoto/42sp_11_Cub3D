@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:22:20 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 12:48:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 23:17:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	render_wall_line_to_screen(t_data *game, t_dda *ray)
 		if (tex_y >= (int)ray->texture->height - 1)
 			tex_y = ray->texture->height - 1;
 		ray->color = get_color(ray, tex_y);
-		mlx_put_pixel(game->wall_img, ray->pixel_x, y, ray->color); 
+//		mlx_put_pixel(game->wall_img, ray->pixel_x, y, ray->color); 
+		mlx_put_pixel(game->playerview_img, ray->pixel_x, y, ray->color); 
 		tex_pos += tex_step;
 		y++;
 	}

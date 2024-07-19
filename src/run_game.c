@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 19:34:19 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 22:39:11 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	run_game(t_data *game)
 	if (!game->mlx)
         	handle_error("Mlx init failed", game, 1);
 	load_weapon_textures(game);
-	draw_background(game);
+	create_mlx_images(game);
+//	draw_background(game);
 	mlx_close_hook(game->mlx, end_game, game);
 	mlx_loop_hook(game->mlx, key_press, game);
 	mlx_cursor_hook(game->mlx, cursor_movement, game);

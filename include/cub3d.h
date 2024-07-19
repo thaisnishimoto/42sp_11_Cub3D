@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 18:50:23 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/18 22:57:32 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ typedef struct s_data
 {
 	t_map	map;
 	mlx_t	*mlx;
-	mlx_image_t	*back_img;
+//	mlx_image_t	*back_img;
 	mlx_image_t	*minimap_img;
-	mlx_image_t	*wall_img;
+//	mlx_image_t	*wall_img;
+	mlx_image_t	*playerview_img;
 	mlx_image_t	*wand_img[WEAPON_FRAMES];
 	mlx_texture_t	*wand_texture[WEAPON_FRAMES];
 	bool	shoot;
