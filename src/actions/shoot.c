@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon.c                                           :+:      :+:    :+:   */
+/*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:12:43 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 11:34:21 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 16:37:44 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	mouse_click(void *param)
-{
-	t_data	*game;
-
-	game = param;
-	if (game->shoot || mlx_is_mouse_down(game->mlx, MLX_MOUSE_BUTTON_LEFT))
-		shoot_weapon(game);
-}
 
 void	shoot_weapon(t_data *game)
 {

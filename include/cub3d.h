@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 15:18:54 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 16:41:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,19 @@ char	*skip_spaces(char *str);
 /*Run game*/
 void	run_game(t_data *game);
 void	create_mlx_images(t_data *game);
+
+/*Hook functions*/
+void	key_press(void *param);
+void    cursor_movement(double mouse_x, double mouse_y, void *param);
+void	mouse_click(void *param);
+
+/*Action functions*/
+void	move_player(t_data *game, float speed);
+void	move_player_left(t_data *game, float speed);
+void	move_player_right(t_data *game, float speed);
+void	rotate_player(t_data *game, float speed);
+void	shoot_weapon(t_data *game);
+
 void	draw_background(t_data *game);
 void	draw_minimap(void *param);
 //void	draw_minimap(t_data *game);
@@ -127,12 +140,6 @@ void    raycast(void *param);
 /*Texture functions*/
 void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 
-/*Control functions*/
-void	key_press(void *param);
-void	mouse_click(void *param);
-void    cursor_movement(double mouse_x, double mouse_y, void *param);
-void	rotate_player(t_data *game, float speed);
-void	shoot_weapon(t_data *game);
 
 /*End game*/
 void	handle_error(char *msg, t_data *game, int stage);
