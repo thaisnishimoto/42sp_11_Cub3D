@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:46:22 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 19:12:34 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:37:24 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	handle_error(char *msg, t_data *game, int stage)
 		{
 			mlx_close_window(game->mlx);
 			mlx_terminate(game->mlx);
-			free(game);
 		}
 	}
+	free(game);
 	exit(EXIT_FAILURE);
 }
 
