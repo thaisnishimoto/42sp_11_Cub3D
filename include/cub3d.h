@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 11:38:39 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:18:54 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ typedef struct s_map
 	char	*south_tex_path;
 	char	*west_tex_path;
 	char	*east_tex_path;
-	mlx_texture_t	*north_texture;
-	mlx_texture_t	*south_texture;
-	mlx_texture_t	*west_texture;
-	mlx_texture_t	*east_texture;
+	mlx_texture_t	*north_tex;
+	mlx_texture_t	*south_tex;
+	mlx_texture_t	*west_tex;
+	mlx_texture_t	*east_tex;
 	int32_t	floor_color;
 	int32_t	ceiling_color;
 	char	**layout;
@@ -91,7 +91,7 @@ typedef struct s_data
 //	mlx_image_t	*wall_img;
 	mlx_image_t	*playerview_img;
 	mlx_image_t	*wand_img[WEAPON_FRAMES];
-	mlx_texture_t	*wand_texture[WEAPON_FRAMES];
+	mlx_texture_t	*wand_tex[WEAPON_FRAMES];
 	bool	shoot;
 	t_vector	player;
 	t_vector	dir;
@@ -130,6 +130,7 @@ void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 /*Control functions*/
 void	key_press(void *param);
 void	mouse_click(void *param);
+void    cursor_movement(double mouse_x, double mouse_y, void *param);
 void	rotate_player(t_data *game, float speed);
 void	shoot_weapon(t_data *game);
 

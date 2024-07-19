@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 11:36:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:10:51 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ void	get_wall_textures(t_data *game)
 		if (!ft_strncmp(game->map.content[i], "NO", 2))
 		{
 			game->map.north_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.north_texture = mlx_load_png(game->map.north_tex_path);
+			game->map.north_tex = mlx_load_png(game->map.north_tex_path);
 		}
 		else if (!ft_strncmp(game->map.content[i], "SO", 2))
 		{
 			game->map.south_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.south_texture = mlx_load_png(game->map.south_tex_path);
+			game->map.south_tex = mlx_load_png(game->map.south_tex_path);
 		}
 		else if (!ft_strncmp(game->map.content[i], "WE", 2))
 		{
 			game->map.west_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.west_texture = mlx_load_png(game->map.west_tex_path);
+			game->map.west_tex = mlx_load_png(game->map.west_tex_path);
 		}
 		else if (!ft_strncmp(game->map.content[i], "EA", 2))
 		{
 			game->map.east_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.east_texture = mlx_load_png(game->map.east_tex_path);
+			game->map.east_tex = mlx_load_png(game->map.east_tex_path);
 		}
 		i++;
 	}
@@ -62,15 +62,15 @@ void	get_weapon_textures(t_data *game)
 {
 	int	i;
 
-	game->wand_texture[0] = mlx_load_png("./textures/weapon/wand_0.png");
-	game->wand_texture[1] = mlx_load_png("./textures/weapon/wand_1.png");
-	game->wand_texture[2] = mlx_load_png("./textures/weapon/wand_2.png");
-	game->wand_texture[3] = mlx_load_png("./textures/weapon/wand_3.png");
-	game->wand_texture[4] = mlx_load_png("./textures/weapon/wand_4.png");
+	game->wand_tex[0] = mlx_load_png("./textures/weapon/wand_0.png");
+	game->wand_tex[1] = mlx_load_png("./textures/weapon/wand_1.png");
+	game->wand_tex[2] = mlx_load_png("./textures/weapon/wand_2.png");
+	game->wand_tex[3] = mlx_load_png("./textures/weapon/wand_3.png");
+	game->wand_tex[4] = mlx_load_png("./textures/weapon/wand_4.png");
 	i = 0;
 	while (i < WEAPON_FRAMES)
 	{
-		if (!game->wand_texture[i])
+		if (!game->wand_tex[i])
 			handle_error("Weapon texture load failed", game, 1);
 		i++;
 	}
