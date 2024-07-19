@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 15:10:51 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:22:47 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	get_weapon_textures(t_data *game)
 	game->wand_tex[1] = mlx_load_png("./textures/weapon/wand_1.png");
 	game->wand_tex[2] = mlx_load_png("./textures/weapon/wand_2.png");
 	game->wand_tex[3] = mlx_load_png("./textures/weapon/wand_3.png");
-	game->wand_tex[4] = mlx_load_png("./textures/weapon/wand_4.png");
 	i = 0;
 	while (i < WEAPON_FRAMES)
 	{

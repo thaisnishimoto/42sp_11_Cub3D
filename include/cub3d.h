@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 16:41:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:22:14 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define SPEED 3.0
 # define ROTATE_SPEED 3.0
 # define WALL_OFFSET 0.25
-# define WEAPON_FRAMES 5
+# define WEAPON_FRAMES 4
 # define REPEAT_FRAME 4
 
 /*Structs*/

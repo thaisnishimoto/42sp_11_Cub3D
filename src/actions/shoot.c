@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:12:43 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 16:37:44 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:22:28 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,9 @@ void	shoot_weapon(t_data *game)
 		game->wand_img[2]->enabled = false;
 		game->wand_img[3]->enabled = true;
 	}
-	if (frame > REPEAT_FRAME * 3 && frame <= REPEAT_FRAME * 4)
+	if (frame > REPEAT_FRAME * 3)
 	{
 		game->wand_img[3]->enabled = false;
-		game->wand_img[4]->enabled = true;
-	}
-	if (frame > REPEAT_FRAME * 4)
-	{
-		game->wand_img[4]->enabled = false;
 		game->wand_img[0]->enabled = true;
 		frame = 0;
 		game->shoot = false;
