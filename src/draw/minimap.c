@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 02:18:15 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 15:05:21 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ static void	draw_tile(mlx_image_t *img, t_coord *pos, size_t size, int color)
 		current_x = pos->x;
 		while (current_x < (pos->x + size))
 		{
-			mlx_put_pixel(img, current_x, current_y, color); 
+			mlx_put_pixel(img, current_x, current_y, color);
 			current_x++;
 		}
 		current_y++;
 	}
 }
 
-void    draw_miniplayer(t_data *game, int scale)
+static void	draw_miniplayer(t_data *game, int scale)
 {
 	t_coord	draw_pos;
-	int	player_scale;
+	int		player_scale;
 
 	player_scale = scale * 0.75;
 	draw_pos.x = game->player.x * scale - player_scale / 2;
@@ -41,7 +41,7 @@ void    draw_miniplayer(t_data *game, int scale)
 	draw_tile(game->minimap_img, &draw_pos, player_scale, 0x00FF00FF);
 }
 
-void	draw_layout(t_data *game, int scale)
+static void	draw_layout(t_data *game, int scale)
 {
 	t_coord	minimap;
 	t_coord	draw_pos;
@@ -70,7 +70,7 @@ void	draw_layout(t_data *game, int scale)
 void	draw_minimap(void *param)
 {
 	t_data	*game;
-	int	scale;
+	int		scale;
 
 	game = param;
 	if (game->map.layout_rows > game->map.layout_columns)

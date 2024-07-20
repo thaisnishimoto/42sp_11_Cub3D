@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 00:07:29 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:08:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static void	draw_background(t_data *game)
 
 static void	update_fps(t_data *game)
 {
-	char	*fps;
-	char	*fps_str;
-	static int						i;
-	static mlx_image_t					*fps_img;
+	char				*fps;
+	char				*fps_str;
+	static int			i;
+	static mlx_image_t	*fps_img;
 
 	game->frame_time = game->mlx->delta_time;
 	if (i++ % 15 == 0)

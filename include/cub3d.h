@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 02:18:59 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:49:00 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ typedef struct s_map
 	size_t	layout_columns;
 }	t_map;
 
+typedef struct s_wall
+{
+	int	height;
+	int	line_start;
+	int	line_end;
+	mlx_texture_t	*texture;
+	t_coord	tex;
+	int	color;
+}	t_wall;
+
 typedef struct s_dda
 {
 	int	pixel_x;
@@ -76,9 +86,6 @@ typedef struct s_dda
 	t_coord	step;
 	int	hit_side;
 	float	perp_dist;
-	mlx_texture_t	*texture;
-	t_vector	tex;
-	int	color;
 }	t_dda;
 
 typedef struct s_data
@@ -130,7 +137,6 @@ void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 
 /*Draw minimap functions*/
 void	draw_minimap(void *param);
-void	draw_miniplayer(t_data *game, int scale);
 
 /*End game*/
 void	handle_error(char *msg, t_data *game, int stage);

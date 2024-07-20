@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 01:50:30 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:11:13 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,17 @@ static void	calculate_ray_initial_dist_to_sides(t_data *game, t_dda *ray)
 	if (ray->dir.x < 0)
 		ray->dist_side.x = (game->player.x - ray->map.x) * ray->delta_dist.x;
 	else
-		ray->dist_side.x = (ray->map.x + 1.0 - game->player.x) * ray->delta_dist.x;
+	{
+		ray->dist_side.x = (ray->map.x + 1.0 - game->player.x)
+			* ray->delta_dist.x;
+	}
 	if (ray->dir.y < 0)
 		ray->dist_side.y = (game->player.y - ray->map.y) * ray->delta_dist.y;
 	else
-		ray->dist_side.y = (ray->map.y + 1.0 - game->player.y) * ray->delta_dist.y;
+	{
+		ray->dist_side.y = (ray->map.y + 1.0 - game->player.y)
+			* ray->delta_dist.y;
+	}
 }
 
 static void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
@@ -76,7 +82,7 @@ void	raycast_walls(t_data *game)
 	ray.pixel_x = 0;
 	while (ray.pixel_x < WIDTH)
 	{
-		ray.plane_ratio = 2 * ray.pixel_x / (float)WIDTH - 1;	
+		ray.plane_ratio = 2 * ray.pixel_x / (float)WIDTH - 1;
 		ray.dir.x = game->dir.x + (game->plane.x * ray.plane_ratio);
 		ray.dir.y = game->dir.y + (game->plane.y * ray.plane_ratio);
 		ray.step.x = set_step_increment_direction(ray.dir.x);
