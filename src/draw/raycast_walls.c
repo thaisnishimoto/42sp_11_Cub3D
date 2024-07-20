@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   raycast_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 23:13:15 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:11:17 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	calculate_ray_deltas(t_dda *ray)
+static int	set_step_increment_direction(float pos)
+{
+	if (pos < 0)
+		return (-1);
+	else
+		return (1);
+}
+
+static void	calculate_ray_deltas(t_dda *ray)
 {
 	if (ray->dir.x == 0)
 		ray->delta_dist.x = HUGE_VALF;
@@ -24,7 +32,7 @@ void	calculate_ray_deltas(t_dda *ray)
 		ray->delta_dist.y = fabs(1 / ray->dir.y);
 }
 
-void	calculate_ray_initial_dist_to_sides(t_data *game, t_dda *ray)
+static void	calculate_ray_initial_dist_to_sides(t_data *game, t_dda *ray)
 {
 	ray->map.x = floor(game->player.x);
 	ray->map.y = floor(game->player.y);
@@ -38,15 +46,7 @@ void	calculate_ray_initial_dist_to_sides(t_data *game, t_dda *ray)
 		ray->dist_side.y = (ray->map.y + 1.0 - game->player.y) * ray->delta_dist.y;
 }
 
-int	set_step_increment_direction(float pos)
-{
-	if (pos < 0)
-		return (-1);
-	else
-		return (1);
-}
-
-void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
+static void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
 {
 	while (game->map.layout[(int)ray->map.y][(int)ray->map.x] != '1')
 	{
@@ -69,40 +69,10 @@ void	calculate_ray_dist_to_wall(t_data *game, t_dda *ray)
 		ray->perp_dist = ray->dist_side.y - ray->delta_dist.y;
 }
 
-void	update_fps(t_data *game)
+void	raycast_walls(t_data *game)
 {
-	char	*fps;
-	char	*fps_str;
-	static int	i;
-	static mlx_image_t	*fps_img;
-
-	game->frame_time = game->mlx->delta_time;
-	if (i++ % 15 == 0)
-	{
-		fps = ft_itoa(1 / game->frame_time);
-		fps_str = ft_strjoin("FPS: ", fps);
-		free(fps);
-		if (fps_img)
-			mlx_delete_image(game->mlx, fps_img);
-		fps_img = mlx_put_string(game->mlx, fps_str, WIDTH - 75, HEIGHT - 20);
-		fps_img->instances->z = 4;
-		free(fps_str);
-	}
-}
-
-void	raycast(void *param)
-{
-	t_data	*game;
 	t_dda	ray;
 
-	game = param;
-	draw_background(game);
-	update_fps(game);
-//	if (game->wall_img)
-//		mlx_delete_image(game->mlx, game->wall_img);
-//	game->wall_img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-//	if (!game->wall_img)
-//		handle_error("Wall image creation failed", game, 2);
 	ray.pixel_x = 0;
 	while (ray.pixel_x < WIDTH)
 	{
@@ -118,8 +88,4 @@ void	raycast(void *param)
 		render_wall_tex_to_screen(game, &ray);
 		ray.pixel_x++;
 	}
-//	if (mlx_image_to_window(game->mlx, game->wall_img, 0, 0) < 0)
-//		handle_error("Wall image render failed", game, 2);
-//	game->wall_img->instances->z = 2;
-//	mlx_set_instance_depth(game->wall_img->instances, 2);
 }
