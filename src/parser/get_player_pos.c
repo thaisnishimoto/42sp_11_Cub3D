@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/18 12:57:01 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:50:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	get_player_pos(t_data *game)
 				game->dir.x = 1;
 				game->dir.y = 0;
 				game->plane.x = 0;
-				game->plane.y = -0.66;
+				game->plane.y = 0.66;
 				break ;
 			}
 			else if (game->map.layout[y][x] == 'W')
@@ -60,7 +60,7 @@ void	get_player_pos(t_data *game)
 				game->dir.x = -1;
 				game->dir.y = 0;
 				game->plane.x = 0;
-				game->plane.y = 0.66;
+				game->plane.y = -0.66;
 				break ;
 			}
 			//replace player pos to 0?
