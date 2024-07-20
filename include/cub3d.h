@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 17:22:14 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:08:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ typedef struct s_data
 {
 	t_map	map;
 	mlx_t	*mlx;
-//	mlx_image_t	*back_img;
 	mlx_image_t	*minimap_img;
-//	mlx_image_t	*wall_img;
 	mlx_image_t	*playerview_img;
 	mlx_image_t	*wand_img[WEAPON_FRAMES];
 	mlx_texture_t	*wand_tex[WEAPON_FRAMES];
@@ -126,20 +124,16 @@ void	move_player_right(t_data *game, float speed);
 void	rotate_player(t_data *game, float speed);
 void	shoot_weapon(t_data *game);
 
-void	draw_background(t_data *game);
-void	draw_minimap(void *param);
-//void	draw_minimap(t_data *game);
-//void	load_weapon_textures(t_data *game);
-
-/*Draw functions*/
-void	draw_miniplayer(t_data *game, int scale);
-void	draw_line(t_data *game, t_vector *point1, int scale);
-void    draw_tile(mlx_image_t *img, t_coord *pos, size_t size, int color);
-void    raycast(void *param);
-
-/*Texture functions*/
+/*Draw playerview functions*/
+void	draw_playerview(void *param);
+void    raycast_walls(t_data *game);
 void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 
+/*Draw minimap functions*/
+void	draw_minimap(void *param);
+void	draw_miniplayer(t_data *game, int scale);
+//void	draw_line(t_data *game, t_vector *point1, int scale);
+//void    draw_tile(mlx_image_t *img, t_coord *pos, size_t size, int color);
 
 /*End game*/
 void	handle_error(char *msg, t_data *game, int stage);
