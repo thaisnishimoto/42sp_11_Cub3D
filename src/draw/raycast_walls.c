@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:12:10 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 00:22:33 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 01:50:30 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	raycast_walls(t_data *game)
 		calculate_ray_deltas(&ray);
 		calculate_ray_initial_dist_to_sides(game, &ray);
 		calculate_ray_dist_to_wall(game, &ray);
-		//draw fov current ray
 		render_wall_tex_to_screen(game, &ray);
 		ray.pixel_x++;
 	}

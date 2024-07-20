@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 00:28:58 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 02:18:59 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
 /*Draw minimap functions*/
 void	draw_minimap(void *param);
 void	draw_miniplayer(t_data *game, int scale);
-//void	draw_line(t_data *game, t_vector *point1, int scale);
 
 /*End game*/
 void	handle_error(char *msg, t_data *game, int stage);
