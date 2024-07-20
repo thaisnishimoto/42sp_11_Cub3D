@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:22:20 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 00:10:57 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:21:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	choose_texture(t_data *game, t_dda *ray)
 {
 	if (ray->hit_side == 0)
 	{
-		if (ray->step_x > 0)
+		if (ray->step.x > 0)
 			ray->texture = game->map.east_tex;
 		else
 			ray->texture = game->map.west_tex;
 	}
 	else
 	{
-		if (ray->step_y > 0)
+		if (ray->step.y > 0)
 			ray->texture = game->map.south_tex;
 		else
 			ray->texture = game->map.north_tex;
