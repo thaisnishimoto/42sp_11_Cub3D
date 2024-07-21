@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/07/18 12:32:49 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/07/20 21:47:42 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,12 @@ HEADERS	:= -I ./include -I $(LIBFT_PATH) -I ./MLX42/include/MLX42
 NAME = cub3D
 LIBFT = $(LIBFT_PATH)/libft.a
 LIBMLX = $(MLX_PATH)/libmlx42.a
-SRC = $(shell find src -name "*.c")
+SRC = src/main.c \
+	$(addprefix src/parser/, parser.c get_textures.c get_colors.c get_map_layout.c get_player_pos.c) \
+	$(addprefix src/run_game/, run_game.c create_images.c) \
+	$(addprefix src/actions/, hook_functions.c move.c shoot.c) \
+	$(addprefix src/draw/, playerview.c raycast_walls.c texture_walls.c minimap.c) \
+	$(addprefix src/end_game/, end_game.c)
 OBJ = $(SRC:.c=.o)
 
 #================================RULES=========================================#
