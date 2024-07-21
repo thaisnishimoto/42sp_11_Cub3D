@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 00:50:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:02:56 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,4 @@ void	get_player_pos(t_data *game)
 		}
 		y++;
 	}
-	printf("player pos x: %d | y: %d\n", (int)game->player.x, (int)game->player.y);
 }
