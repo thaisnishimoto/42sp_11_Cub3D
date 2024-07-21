@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 17:53:21 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:04:16 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	run_game(t_data *game)
 {
 	game->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
 	if (!game->mlx)
-        	handle_error("Mlx init failed", game, 1);
+		handle_error("Mlx init failed", game, 1);
 	create_mlx_images(game);
 	mlx_close_hook(game->mlx, end_game, game);
 	mlx_loop_hook(game->mlx, key_press, game);
