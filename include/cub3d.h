@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 21:05:04 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/22 11:47:00 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define MINI_HEIGHT 200
 # define SPEED 3.0
 # define ROTATE_SPEED 3.0
-# define WALL_OFFSET 0.25
+# define WALL_OFFSET 0.3
 # define WEAPON_FRAMES 4
 # define REPEAT_FRAME 4
 
