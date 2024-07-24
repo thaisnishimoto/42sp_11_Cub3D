@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/07/20 21:47:42 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/07/23 19:31:18 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MAKE_NO_PRINT = $(MAKE) --no-print-directory
 LIBFT_PATH = ./libft
 MLX_PATH = ./MLX42/build
 SRC_PATH = ./src
-HEADERS	:= -I ./include -I $(LIBFT_PATH) -I ./MLX42/include/MLX42
+HEADERS	:= -I ./include -I $(LIBFT_PATH)/inc -I ./MLX42/include/MLX42
 
 #================================FILES=========================================#
 
@@ -31,6 +31,7 @@ NAME = cub3D
 LIBFT = $(LIBFT_PATH)/libft.a
 LIBMLX = $(MLX_PATH)/libmlx42.a
 SRC = src/main.c \
+	$(addprefix src/validate_file/, validate_file_1.c validate_file_2.c validate_file_3.c validate_file_4.c validate_file_utils1.c validate_file_utils2.c load_file.c load_player.c) \
 	$(addprefix src/parser/, parser.c get_textures.c get_colors.c get_map_layout.c get_player_pos.c) \
 	$(addprefix src/run_game/, run_game.c create_images.c) \
 	$(addprefix src/actions/, hook_functions.c move.c shoot.c) \
