@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/24 00:22:30 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 00:39:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	get_wall_textures(t_data *game)
 			game->map.east_tex = mlx_load_png(skip_spaces(&map_content[i][3]));
 		i++;
 	}
-	if (!game->map.north_tex || !game->map.south_tex ||
-		!game->map.west_tex || !game->map.east_tex)
-			handle_error("Wall texture load failed", game, 1);
+	if (!game->map.north_tex || !game->map.south_tex
+		|| !game->map.west_tex || !game->map.east_tex)
+		handle_error("Wall texture load failed", game, 1);
 }
 
 void	get_weapon_textures(t_data *game)

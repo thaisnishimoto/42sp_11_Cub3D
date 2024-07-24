@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/23 23:29:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/23 23:52:35 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	get_file_rows(t_data *game)
 {
-	int	fd;
-	int	count;
+	int		fd;
+	int		count;
 	char	*line;
 
 	fd = open(game->map.path, O_RDWR);
@@ -37,8 +37,8 @@ static int	get_file_rows(t_data *game)
 
 void	allocate_file_content(t_data *game)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 	char	*line;
 
 	game->map.content_rows = get_file_rows(game);

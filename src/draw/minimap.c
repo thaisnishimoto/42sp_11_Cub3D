@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:47:21 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 15:05:21 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 00:58:58 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	draw_layout(t_data *game, int scale)
 	while (game->map.layout[minimap.y])
 	{
 		minimap.x = 0;
-		//change to \0
 		while (game->map.layout[minimap.y][minimap.x] != '\n')
 		{
 			draw_pos.x = minimap.x * scale;
