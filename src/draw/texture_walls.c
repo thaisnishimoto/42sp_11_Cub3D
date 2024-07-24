@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:22:20 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/20 20:48:39 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:53:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	calculate_hitpoint_x_pos(t_data *game, t_dda *ray, t_wall *wall)
 	wall->tex.x = (int)(wall->texture->width * wall_hit_x);
 	if ((ray->hit_side == 0 && ray->dir.x < 0)
 		|| (ray->hit_side == 1 && ray->dir.y > 0))
-		wall->tex.x = wall->texture->width - wall->tex.x;
+		wall->tex.x = wall->texture->width - 1 - wall->tex.x;
 }
 
 static int	get_color(t_wall *wall)
