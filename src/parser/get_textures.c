@@ -6,13 +6,12 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 17:22:47 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 00:22:30 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//And replaces new line at end for \0
 char	*skip_spaces(char *str)
 {
 	int	i;
@@ -28,34 +27,26 @@ char	*skip_spaces(char *str)
 
 void	get_wall_textures(t_data *game)
 {
-	int	i;
+	char	**map_content;
+	int		i;
 
+	map_content = game->map.content;
 	i = 0;
-	while (game->map.content[i])
+	while (map_content[i])
 	{
-		if (!ft_strncmp(game->map.content[i], "NO", 2))
-		{
-			game->map.north_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.north_tex = mlx_load_png(game->map.north_tex_path);
-		}
-		else if (!ft_strncmp(game->map.content[i], "SO", 2))
-		{
-			game->map.south_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.south_tex = mlx_load_png(game->map.south_tex_path);
-		}
-		else if (!ft_strncmp(game->map.content[i], "WE", 2))
-		{
-			game->map.west_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.west_tex = mlx_load_png(game->map.west_tex_path);
-		}
-		else if (!ft_strncmp(game->map.content[i], "EA", 2))
-		{
-			game->map.east_tex_path = skip_spaces(&game->map.content[i][3]);
-			game->map.east_tex = mlx_load_png(game->map.east_tex_path);
-		}
+		if (!ft_strncmp(map_content[i], "NO", 2))
+			game->map.north_tex = mlx_load_png(skip_spaces(&map_content[i][3]));
+		else if (!ft_strncmp(map_content[i], "SO", 2))
+			game->map.south_tex = mlx_load_png(skip_spaces(&map_content[i][3]));
+		else if (!ft_strncmp(map_content[i], "WE", 2))
+			game->map.west_tex = mlx_load_png(skip_spaces(&map_content[i][3]));
+		else if (!ft_strncmp(map_content[i], "EA", 2))
+			game->map.east_tex = mlx_load_png(skip_spaces(&map_content[i][3]));
 		i++;
 	}
-	//check if any texture == NULL
+	if (!game->map.north_tex || !game->map.south_tex ||
+		!game->map.west_tex || !game->map.east_tex)
+			handle_error("Wall texture load failed", game, 1);
 }
 
 void	get_weapon_textures(t_data *game)

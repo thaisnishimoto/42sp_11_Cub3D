@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/23 23:28:16 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 00:23:27 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ typedef struct s_map
 	char			*path;
 	int				content_rows;
 	char			**content;
-	char			*north_tex_path;
-	char			*south_tex_path;
-	char			*west_tex_path;
-	char			*east_tex_path;
 	mlx_texture_t	*north_tex;
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*west_tex;
