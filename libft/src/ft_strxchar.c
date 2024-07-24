@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strxchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/23 18:20:51 by tmina-ni         ###   ########.fr       */
+/*   Created: 2024/03/29 11:06:45 by mchamma           #+#    #+#             */
+/*   Updated: 2024/04/02 12:21:21 by mchamma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// Return quantity of char within a string
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+int	ft_strxchar(const char *str, char c)
 {
-	t_data	*game;
+	int	count;
+	int	i;
 
-	validate_file(argc, argv);
-	game = ft_calloc(1, sizeof(t_data));
-	game->map.path = argv[1];
-	parse_map(game);
-	run_game(game);
-	return (EXIT_SUCCESS);
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
 }

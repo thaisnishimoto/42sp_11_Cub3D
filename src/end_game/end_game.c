@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:46:22 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/22 14:43:47 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/23 23:31:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	handle_error(char *msg, t_data *game, int stage)
 	write(STDERR_FILENO, "\n", 1);
 	if (stage > 0)
 	{
-		ft_free_matrix(game->map.content);
+		ft_mtx_free(game->map.content);
 		delete_textures(game);
 		if (stage > 1)
 		{
@@ -59,7 +59,7 @@ void	end_game(void *param)
 	mlx_close_window(game->mlx);
 	delete_textures(game);
 	mlx_terminate(game->mlx);
-	ft_free_matrix(game->map.content);
+	ft_mtx_free(game->map.content);
 	free(game);
 	exit (EXIT_SUCCESS);
 }

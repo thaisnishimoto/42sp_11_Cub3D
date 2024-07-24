@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/19 11:35:45 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/23 23:29:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static int	get_file_rows(t_data *game)
 	if (fd == -1)
 		handle_error("Open map file failed", game, 0);
 	count = 0;
-	line = ft_get_next_line(fd);
+	line = get_next_line(fd);
 	while (line)
 	{
 		if (ft_strcmp(line, "\n"))
 			count++;
 		free(line);
-		line = ft_get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	if (close(fd) == -1)
 		handle_error("Close map file failed", game, 0);
@@ -47,7 +47,7 @@ void	allocate_file_content(t_data *game)
 		handle_error("Open map file failed", game, 0);
 	game->map.content = ft_calloc(game->map.content_rows + 1, sizeof(char *));
 	i = 0;
-	line = ft_get_next_line(fd);
+	line = get_next_line(fd);
 	while (line)
 	{
 		if (ft_strcmp(line, "\n"))
@@ -56,7 +56,7 @@ void	allocate_file_content(t_data *game)
 			i++;
 		}
 		free(line);
-		line = ft_get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	if (close(fd) == -1)
 		handle_error("Close map file failed", game, 1);

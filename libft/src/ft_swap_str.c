@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_swap_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/23 18:20:51 by tmina-ni         ###   ########.fr       */
+/*   Created: 2024/04/05 12:31:15 by mchamma           #+#    #+#             */
+/*   Updated: 2024/04/05 12:32:12 by mchamma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// Swap the value of integer a and b
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+void	ft_swap_str(char **str1, char **str2)
 {
-	t_data	*game;
+	char	*temp;
 
-	validate_file(argc, argv);
-	game = ft_calloc(1, sizeof(t_data));
-	game->map.path = argv[1];
-	parse_map(game);
-	run_game(game);
-	return (EXIT_SUCCESS);
+	temp = *str1;
+	*str1 = *str2;
+	*str2 = temp;
 }
