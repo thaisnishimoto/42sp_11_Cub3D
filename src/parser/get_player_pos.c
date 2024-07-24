@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/24 00:57:19 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 01:06:51 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	north_initial_setup(t_data *game, int x, int y)
 {
 	game->player.x = x;
 	game->player.y = y;
-	game->map.content[y][x] = '0';
+	game->map.layout[y][x] = '0';
 	game->dir.x = 0;
 	game->dir.y = -1;
 	game->plane.x = 0.66;
@@ -27,7 +27,7 @@ static void	south_initial_setup(t_data *game, int x, int y)
 {
 	game->player.x = x;
 	game->player.y = y;
-	game->map.content[y][x] = '0';
+	game->map.layout[y][x] = '0';
 	game->dir.x = 0;
 	game->dir.y = 1;
 	game->plane.x = -0.66;
@@ -38,7 +38,7 @@ static void	east_initial_setup(t_data *game, int x, int y)
 {
 	game->player.x = x;
 	game->player.y = y;
-	game->map.content[y][x] = '0';
+	game->map.layout[y][x] = '0';
 	game->dir.x = 1;
 	game->dir.y = 0;
 	game->plane.x = 0;
@@ -49,7 +49,7 @@ static void	west_initial_setup(t_data *game, int x, int y)
 {
 	game->player.x = x;
 	game->player.y = y;
-	game->map.content[y][x] = '0';
+	game->map.layout[y][x] = '0';
 	game->dir.x = -1;
 	game->dir.y = 0;
 	game->plane.x = 0;
