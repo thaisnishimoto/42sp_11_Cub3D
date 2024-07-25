@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/24 00:23:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/24 23:58:52 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,17 @@ typedef struct s_data
 
 /*Validate functions*/
 void	validate_file(int argc, char **argv);
-int	validate_file_count(char *file_add);
-int	validate_file_content(char *file_add);
-int	validate_map_game(char *file_add);
+int		validate_file_count(char *file_add);
+int		validate_file_content(char *file_add);
+int		validate_map_game(char *file_add);
 char	**load_file(char *file_add);
-int	*load_player(char **file);
+int		*load_player(char **file);
 
 /*Validate utils*/
-int	is_empty_line(char *line);
+int		is_empty_line(char *line);
 void	replace_char(char *str, char old, char new);
 void	error_file(int i);
-int     hash_elem(char *line);
+int		hash_elem(char *line);
 
 /*Parse functions*/
 void	parse_map(t_data *game);
