@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_file_utils2.c                             :+:      :+:    :+:   */
+/*   validate_file_utils2_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:53:11 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/23 11:20:12 by mchamma          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:35:09 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	print_player(int *player)
 {

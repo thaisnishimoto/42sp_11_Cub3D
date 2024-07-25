@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_file_utils1.c                             :+:      :+:    :+:   */
+/*   validate_file_utils1_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:31:38 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/23 11:31:41 by mchamma          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:34:43 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	is_empty_line(char *line)
 {

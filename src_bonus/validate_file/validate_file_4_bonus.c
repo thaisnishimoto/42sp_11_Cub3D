@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_file_4.c                                  :+:      :+:    :+:   */
+/*   validate_file_4_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:25:23 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/23 11:32:05 by mchamma          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:34:11 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	flood_fill(char **file, int x, int y, int *open_map)
 {

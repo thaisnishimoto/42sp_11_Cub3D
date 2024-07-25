@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_player.c                                      :+:      :+:    :+:   */
+/*   load_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:24:47 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/23 11:30:52 by mchamma          ###   ########.fr       */
+/*   Updated: 2024/07/25 11:33:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	update_player(int *player, int i, int j, char **file)
 {
