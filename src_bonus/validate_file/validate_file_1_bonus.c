@@ -6,7 +6,7 @@
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:24:54 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/25 11:33:17 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:03:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_file(int i)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	if (i == 1)
 		ft_putstr_fd("Incorrect quantity of arguments\n", 2);
 	else if (i == 2)
