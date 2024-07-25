@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/23 23:52:35 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:13:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	parse_map(t_data *game)
 {
 	allocate_file_content(game);
 	get_wall_textures(game);
-	get_weapon_textures(game);
 	get_background_colors(game);
 	get_map_layout(game);
 	get_player_pos(game);

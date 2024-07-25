@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:46:22 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/23 23:31:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:10:42 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ static void	delete_textures(t_data *game)
 		mlx_delete_texture(game->map.west_tex);
 	if (game->map.east_tex)
 		mlx_delete_texture(game->map.east_tex);
-	if (game->wand_tex[0])
-		mlx_delete_texture(game->wand_tex[0]);
-	if (game->wand_tex[1])
-		mlx_delete_texture(game->wand_tex[1]);
-	if (game->wand_tex[2])
-		mlx_delete_texture(game->wand_tex[2]);
-	if (game->wand_tex[3])
-		mlx_delete_texture(game->wand_tex[3]);
 }
 
 void	handle_error(char *msg, t_data *game, int stage)

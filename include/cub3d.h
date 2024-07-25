@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/24 23:58:52 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:15:45 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,9 @@
 /*Macros*/
 # define WIDTH 800
 # define HEIGHT 600
-# define MINI_WIDTH 200
-# define MINI_HEIGHT 200
 # define SPEED 3.0
 # define ROTATE_SPEED 3.0
 # define WALL_OFFSET 0.3
-# define WEAPON_FRAMES 4
-# define REPEAT_FRAME 4
 
 /*Structs*/
 typedef struct s_vector
@@ -90,9 +86,6 @@ typedef struct s_data
 	mlx_t			*mlx;
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*playerview_img;
-	mlx_image_t		*wand_img[WEAPON_FRAMES];
-	mlx_texture_t	*wand_tex[WEAPON_FRAMES];
-	bool			shoot;
 	t_vector		player;
 	t_vector		dir;
 	t_vector		plane;
@@ -118,7 +111,6 @@ int		hash_elem(char *line);
 /*Parse functions*/
 void	parse_map(t_data *game);
 void	get_wall_textures(t_data *game);
-void	get_weapon_textures(t_data *game);
 void	get_background_colors(t_data *game);
 void	get_map_layout(t_data *game);
 void	get_player_pos(t_data *game);
@@ -130,23 +122,17 @@ void	create_mlx_images(t_data *game);
 
 /*Hook functions*/
 void	key_press(void *param);
-void	cursor_movement(double mouse_x, double mouse_y, void *param);
-void	mouse_click(void *param);
 
 /*Action functions*/
 void	move_player(t_data *game, float speed);
 void	move_player_left(t_data *game, float speed);
 void	move_player_right(t_data *game, float speed);
 void	rotate_player(t_data *game, float speed);
-void	shoot_weapon(t_data *game);
 
 /*Draw playerview functions*/
 void	draw_playerview(void *param);
 void	raycast_walls(t_data *game);
 void	render_wall_tex_to_screen(t_data *game, t_dda *ray);
-
-/*Draw minimap functions*/
-void	draw_minimap(void *param);
 
 /*End game*/
 void	handle_error(char *msg, t_data *game, int stage);

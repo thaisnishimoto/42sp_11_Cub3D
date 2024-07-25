@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/24 00:39:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:13:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,4 @@ void	get_wall_textures(t_data *game)
 	if (!game->map.north_tex || !game->map.south_tex
 		|| !game->map.west_tex || !game->map.east_tex)
 		handle_error("Wall texture load failed", game, 1);
-}
-
-void	get_weapon_textures(t_data *game)
-{
-	int	i;
-
-	game->wand_tex[0] = mlx_load_png("./textures/weapon/wand_0.png");
-	game->wand_tex[1] = mlx_load_png("./textures/weapon/wand_1.png");
-	game->wand_tex[2] = mlx_load_png("./textures/weapon/wand_2.png");
-	game->wand_tex[3] = mlx_load_png("./textures/weapon/wand_3.png");
-	i = 0;
-	while (i < WEAPON_FRAMES)
-	{
-		if (!game->wand_tex[i])
-			handle_error("Weapon texture load failed", game, 1);
-		i++;
-	}
 }
