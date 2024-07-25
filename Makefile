@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:44:33 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/07/25 00:35:19 by tmina-ni         ###   ########.fr        #
+#    Updated: 2024/07/25 11:21:20 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,14 +83,16 @@ leak: all
 #================================CLEAN=========================================#
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 	$(MAKE_NO_PRINT) clean -C $(LIBFT_PATH)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 	$(MAKE_NO_PRINT) fclean -C $(LIBFT_PATH)
 
 re: fclean all
+
+rebonus: fclean bonus
 
 mlxfclean:
 	rm -rf $(MLX_PATH)
