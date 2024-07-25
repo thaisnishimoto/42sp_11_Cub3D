@@ -6,7 +6,7 @@
 /*   By: mchamma <mchamma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 07:17:29 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/25 12:43:11 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:00:40 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	north_initial_setup(t_data *game)
 
 void	get_player_pos(t_data *game, int *player)
 {
-	game->player.x = player[2];
-	game->player.y = player[1] - 6;
+	game->player.x = player[2] + 0.5;
+	game->player.y = player[1] - 6 + 0.5;
 	if (player[3] == 'N')
 		north_initial_setup(game);
 	else if (player[3] == 'S')
