@@ -6,7 +6,7 @@
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:24:54 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/25 15:03:55 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:05:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	error_file(int i)
 	else if (i == 10)
 		ft_putstr_fd("Map must have just one player\n", 2);
 	else if (i == 11)
-		ft_putstr_fd("Map has open wall(s)\n", 2);
+		ft_putstr_fd("Player shouldn't reach empty space\n", 2);
 	exit (1);
 }
 
