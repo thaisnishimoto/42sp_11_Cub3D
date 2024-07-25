@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:24:07 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/25 12:15:45 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:36:43 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		validate_file_count(char *file_add);
 int		validate_file_content(char *file_add);
 int		validate_map_game(char *file_add);
 char	**load_file(char *file_add);
+int		file_rows(char *file_add);
 int		*load_player(char **file);
 
 /*Validate utils*/
@@ -113,8 +114,7 @@ void	parse_map(t_data *game);
 void	get_wall_textures(t_data *game);
 void	get_background_colors(t_data *game);
 void	get_map_layout(t_data *game);
-void	get_player_pos(t_data *game);
-char	*skip_spaces(char *str);
+void	get_player_pos(t_data *game, int *player);
 
 /*Run game*/
 void	run_game(t_data *game);

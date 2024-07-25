@@ -3,80 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   get_player_pos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mchamma <mchamma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 17:50:26 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/24 01:06:51 by tmina-ni         ###   ########.fr       */
+/*   Created: 2024/07/25 07:17:29 by mchamma           #+#    #+#             */
+/*   Updated: 2024/07/25 12:00:19 by mchamma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	north_initial_setup(t_data *game, int x, int y)
+static void	west_initial_setup(t_data *game)
 {
-	game->player.x = x;
-	game->player.y = y;
-	game->map.layout[y][x] = '0';
-	game->dir.x = 0;
-	game->dir.y = -1;
-	game->plane.x = 0.66;
-	game->plane.y = 0;
-}
-
-static void	south_initial_setup(t_data *game, int x, int y)
-{
-	game->player.x = x;
-	game->player.y = y;
-	game->map.layout[y][x] = '0';
-	game->dir.x = 0;
-	game->dir.y = 1;
-	game->plane.x = -0.66;
-	game->plane.y = 0;
-}
-
-static void	east_initial_setup(t_data *game, int x, int y)
-{
-	game->player.x = x;
-	game->player.y = y;
-	game->map.layout[y][x] = '0';
-	game->dir.x = 1;
-	game->dir.y = 0;
-	game->plane.x = 0;
-	game->plane.y = 0.66;
-}
-
-static void	west_initial_setup(t_data *game, int x, int y)
-{
-	game->player.x = x;
-	game->player.y = y;
-	game->map.layout[y][x] = '0';
 	game->dir.x = -1;
 	game->dir.y = 0;
 	game->plane.x = 0;
 	game->plane.y = -0.66;
 }
 
-void	get_player_pos(t_data *game)
+static void	east_initial_setup(t_data *game)
 {
-	int	x;
-	int	y;
+	game->dir.x = 1;
+	game->dir.y = 0;
+	game->plane.x = 0;
+	game->plane.y = 0.66;
+}
 
-	y = 0;
-	while (game->map.layout[y])
-	{
-		x = 0;
-		while (game->map.layout[y][x])
-		{
-			if (game->map.layout[y][x] == 'N')
-				north_initial_setup(game, x, y);
-			else if (game->map.layout[y][x] == 'S')
-				south_initial_setup(game, x, y);
-			else if (game->map.layout[y][x] == 'E')
-				east_initial_setup(game, x, y);
-			else if (game->map.layout[y][x] == 'W')
-				west_initial_setup(game, x, y);
-			x++;
-		}
-		y++;
-	}
+static void	south_initial_setup(t_data *game)
+{
+	game->dir.x = 0;
+	game->dir.y = 1;
+	game->plane.x = -0.66;
+	game->plane.y = 0;
+}
+
+static void	north_initial_setup(t_data *game)
+{
+	game->dir.x = 0;
+	game->dir.y = -1;
+	game->plane.x = 0.66;
+	game->plane.y = 0;
+}
+
+void	get_player_pos(t_data *game, int *player)
+{
+	game->player.x = player[2];
+	game->player.y = player[1] - 6;
+	if (player[3] == 'N')
+		north_initial_setup(game);
+	else if (player[3] == 'S')
+		south_initial_setup(game);
+	else if (player[3] == 'E')
+		east_initial_setup(game);
+	else if (player[3] == 'W')
+		west_initial_setup(game);
 }

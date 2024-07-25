@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mchamma <mchamma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/25 11:35:33 by tmina-ni         ###   ########.fr       */
+/*   Created: 2024/07/25 08:05:23 by mchamma           #+#    #+#             */
+/*   Updated: 2024/07/25 12:42:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	get_rgba(char *colors)
+int	get_rgba(char *color)
 {
 	char	**rgb;
 	int		r;
 	int		g;
 	int		b;
 
-	rgb = ft_split(colors, ',');
+	rgb = ft_split(color, ',');
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
@@ -29,22 +29,10 @@ int	get_rgba(char *colors)
 
 void	get_background_colors(t_data *game)
 {
-	int		i;
-	char	*colors;
+	char	*color;
 
-	i = 0;
-	while (game->map.content[i])
-	{
-		if (!ft_strncmp(game->map.content[i], "F", 1))
-		{
-			colors = skip_spaces(&game->map.content[i][1]);
-			game->map.floor_color = get_rgba(colors);
-		}
-		else if (!ft_strncmp(game->map.content[i], "C", 1))
-		{
-			colors = skip_spaces(&game->map.content[i][1]);
-			game->map.ceiling_color = get_rgba(colors);
-		}
-		i++;
-	}
+	color = game->map.content[4];
+	game->map.floor_color = get_rgba(color);
+	color = game->map.content[5];
+	game->map.ceiling_color = get_rgba(color);
 }

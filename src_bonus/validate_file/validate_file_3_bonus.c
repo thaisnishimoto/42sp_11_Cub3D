@@ -6,7 +6,7 @@
 /*   By: mchamma <mchamma@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:25:17 by mchamma           #+#    #+#             */
-/*   Updated: 2024/07/25 11:33:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:53:57 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,21 @@ int	validate_color_content(char *line)
 
 int	validate_texture_content(char *line)
 {
-	size_t	file_len;
-	size_t	ext_len;
+	size_t			file_len;
+	mlx_texture_t	*tex;
+	size_t			ext_len;
+	int				check;
 
+	check = 1;
 	file_len = ft_strlen(line);
 	ext_len = ft_strlen(".png");
-	if (file_len <= ext_len || ft_strcmp(&line[file_len - 4], ".png"))
-		return (0);
-	return (1);
+	tex = mlx_load_png(line);
+	if (file_len <= ext_len || ft_strcmp(&line[file_len - 4], ".png")
+		|| !tex)
+		check = 0;
+	if (tex)
+		mlx_delete_texture(tex);
+	return (check);
 }
 
 void	validate_file_content_ext(char **file, int *arr)

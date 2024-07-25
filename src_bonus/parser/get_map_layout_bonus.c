@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_layout_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mchamma <mchamma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 16:38:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/25 11:36:03 by tmina-ni         ###   ########.fr       */
+/*   Created: 2024/07/25 08:15:25 by mchamma           #+#    #+#             */
+/*   Updated: 2024/07/25 12:42:54 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	get_map_layout(t_data *game)
 	size_t	columns;
 
 	game->map.layout = &game->map.content[6];
-	if (game->map.layout == NULL)
-		handle_error("Map layout missing.", game, 1);
 	rows = 0;
 	columns = 0;
 	while (game->map.layout[rows])
